@@ -5,6 +5,7 @@ moduledir '/etc/puppet/modules'
 # Versions should be updated to be the latest at the time you start
 mod 'puppetlabs/stdlib',  '6.3.0'
 mod 'puppetlabs/concat',  '6.2.0'
+mod 'puppetlabs-ntp', '8.3.0'
 
 # Modules from Git
 # Examples: https://github.com/puppetlabs/r10k/blob/master/doc/puppetfile.mkd#examples
