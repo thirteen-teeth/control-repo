@@ -1,5 +1,5 @@
 forge 'https://forge.puppet.com'
-moduledir '/etc/puppet/modules'
+moduledir '/etc/puppetlabs/code/modules/'
 
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
