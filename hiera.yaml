@@ -3,24 +3,28 @@ version: 5
 
 defaults:
   datadir: "data"
+  data_hash: "yaml_data"
 
 hierarchy:
-  - name: "Secret data: per-node, per-datacenter, common"
-    lookup_key: eyaml_lookup_key
-    paths:
-      - "secrets/nodes/%{trusted.certname}.eyaml"
-      - "secrets/location/%{facts.whereami}.eyaml"
-      - "common.eyaml"
-    options:
-      pkcs7_private_key: /etc/puppetlabs/puppet/eyaml/keys/private_key.pkcs7.pem
-      pkcs7_public_key:  /etc/puppetlabs/puppet/eyaml/keys/public_key.pkcs7.pem
-
-  - name: "Normal data"
-    data_hash: yaml_data
+  - name: "Per-node data"
     paths:
       - "nodes/%{trusted.certname}.yaml"
-      - "location/%{facts.whereami}/%{facts.group}.yaml"
-      - "groups/%{facts.group}.yaml"
-      - "os/%{facts.os.family}.yaml"
-      - "common.yaml"
 
+  - name: "Roles"
+    paths:
+      - "role/%{trusted.extensions.pp_role}.yaml"
+      - "role/%{role}.yaml"
+
+  - name: "Environment"
+    paths:
+      - "environment/%{trusted.extensions.pp_environment}.yaml"
+
+  - name: "Location"
+    paths:
+      - "location/%{trusted.extensions.pp_datacenter}.yaml"
+      - "location/%{facts.datacenter}.yaml"
+      - "location/%{facts.location}.yaml"
+
+  - name: "Common"
+    paths:
+      - "common.yaml"
