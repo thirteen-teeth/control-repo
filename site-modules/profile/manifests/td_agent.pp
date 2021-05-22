@@ -12,9 +12,11 @@ class profile::td_agent () {
         {
           'type' => 'systemd',
           'path' => '/var/log/journal',
+          'tag'  => 'systemd',
         },
       ],
       'match'  => {
+        'tag_pattern'       => 'systemd',
         'type'              => 'file',
         'path'              => '/var/log/myapp',
         'time_slice_format' => '%Y%m%d',
