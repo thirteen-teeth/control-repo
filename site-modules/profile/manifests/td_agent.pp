@@ -16,14 +16,9 @@ class profile::td_agent () {
         },
       ],
       'match'  => {
-        'tag_pattern'       => 'systemd',
-        'type'              => 'file',
-        'path'              => '/var/log/myapp',
-        'time_slice_format' => '%Y%m%d',
-        'time_slice_wait'   => '10m',
-        'time_format'       => '%Y%m%dT%H%M%S%z',
-        'compress'          => 'gzip',
-        'utc'               => '',
+        'tag_pattern' => 'systemd',
+        'type'        => 'file',
+        'path'        => '/var/log/myapp',
       },
     },
   }
