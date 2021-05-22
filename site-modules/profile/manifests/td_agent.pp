@@ -2,6 +2,39 @@
 
 class profile::td_agent () {
 
-  class { 'fluentd': }
+  include fluentd
+
+  fluentd::plugin { 'fluent-plugin-systemd': }
+
+  fluentd::config { '100_systemd.conf':
+    config => {
+      'source' => [
+        {
+          'type' => 'systemd',
+          'path' => '/var/log/journal',
+        },
+      ],
+      'match'  => {
+        'type'              => 'file',
+        'path'              => '/var/log/myapp',
+        'time_slice_format' => '%Y%m%d',
+        'time_slice_wait'   => '10m',
+        'time_format'       => '%Y%m%dT%H%M%S%z',
+        'compress'          => 'gzip',
+        'utc'               => '',
+      },
+    },
+  }
 
 }
+
+
+#<match pattern>
+#  @type file
+#  path /var/log/fluent/myapp
+#  time_slice_format %Y%m%d
+#  time_slice_wait 10m
+#  time_format %Y%m%dT%H%M%S%z
+#  compress gzip
+#  utc
+#</match>
