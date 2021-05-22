@@ -10,6 +10,16 @@ mod 'puppetlabs-postgresql', '7.1.0'
 mod 'puppetlabs-firewall', '3.0.0'
 mod 'puppetlabs-translate', '2.2.0'
 
+# FluentD requirements
+mod 'encore-fluentd', '1.1.0'
+mod 'puppetlabs-apt', '8.0.2'
+mod 'puppetlabs-chocolatey', '6.0.1'
+mod 'puppetlabs-powershell', '5.0.0'
+mod 'puppetlabs-pwshlib', '0.8.0'
+mod 'puppetlabs-registry', '4.0.0'
+mod 'puppetlabs-yumrepo_core', '1.0.7'
+
+
 # Modules from Git
 # Examples: https://github.com/puppetlabs/r10k/blob/master/doc/puppetfile.mkd#examples
 #mod 'apache',
