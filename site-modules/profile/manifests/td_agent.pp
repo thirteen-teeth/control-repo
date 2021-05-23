@@ -30,7 +30,8 @@ class profile::td_agent () {
         'default_topic'     => 'rsyslog',
         'required_acks'     => '-1',
         'compression_codec' => 'gzip',
-        'buffer topic'      => {
+        'buffer'            => {
+          'tag_pattern'    => 'topic',
           'type'           => 'file',
           'path'           => '/tmp/buffer/td',
           'flush_interval' => '3s'
