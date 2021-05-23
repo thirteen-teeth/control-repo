@@ -2,9 +2,15 @@
 
 class profile::td_agent () {
 
+  user { 'td-agent':
+    ensure => 'present',
+    group  => 'systemd-journal',
+  }
+
   include fluentd
 
   fluentd::plugin { 'fluent-plugin-systemd': }
+  fluentd::plugin { 'fluent-plugin-kafka': }
 
   fluentd::config { '100_systemd.conf':
     config => {
@@ -22,7 +28,7 @@ class profile::td_agent () {
         },
       ],
       'match'  => {
-        'tag_pattern' => 'syslog**',
+        'tag_pattern' => 'systemd**',
         'type'        => 'file',
         'path'        => '/tmp/syslog',
       },
