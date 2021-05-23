@@ -22,7 +22,7 @@ class profile::td_agent () {
         },
       ],
       'match'  => {
-        'tag_pattern' => 'syslog',
+        'tag_pattern' => 'syslog**',
         'type'        => 'file',
         'path'        => '/tmp/syslog',
       },
