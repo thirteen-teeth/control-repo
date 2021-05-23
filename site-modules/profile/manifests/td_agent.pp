@@ -11,27 +11,22 @@ class profile::td_agent () {
       'source' => [
         {
           'type' => 'systemd',
-          'path' => '/var/log/journal',
+          'path' => '/run/log/journal/',
           'tag'  => 'systemd',
+        },
+        {
+          'type' => 'syslog',
+          'port' => '5140',
+          'bind' => '0.0.0.0',
+          'tag'  => 'syslog'
         },
       ],
       'match'  => {
-        'tag_pattern' => 'systemd',
+        'tag_pattern' => 'syslog',
         'type'        => 'file',
-        'path'        => '/var/log/myapp',
+        'path'        => '/tmp/syslog',
       },
     },
   }
 
 }
-
-
-#<match pattern>
-#  @type file
-#  path /var/log/fluent/myapp
-#  time_slice_format %Y%m%d
-#  time_slice_wait 10m
-#  time_format %Y%m%dT%H%M%S%z
-#  compress gzip
-#  utc
-#</match>
