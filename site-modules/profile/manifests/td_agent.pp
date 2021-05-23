@@ -20,19 +20,49 @@ class profile::td_agent () {
           'path' => '/run/log/journal/',
           'tag'  => 'systemd',
         },
-        {
-          'type' => 'syslog',
-          'port' => '5140',
-          'bind' => '0.0.0.0',
-          'tag'  => 'syslog'
-        },
       ],
       'match'  => {
-        'tag_pattern' => 'systemd**',
-        'type'        => 'file',
-        'path'        => '/tmp/syslog',
+        'tag_pattern'       => 'systemd**',
+        'type'              => 'kakfa2',
+        'brokers'           => 'kafka-host:9092',
+        'use_event_time'    => 'true',
+        'topic_key'         => 'rsyslog',
+        'default_topic'     => 'rsyslog',
+        'required_acks'     => '-1',
+        'compression_codec' => 'gzip',
+        'buffer topic'      => {
+          'type'           => 'file',
+          'path'           => '/tmp/buffer/td',
+          'flush_interval' => '3s'
+        },
+        'format'            => {
+          'type' => 'json',
+        },
       },
     },
   }
 
 }
+
+#  <source>
+#    path "/run/log/journal/"
+#    tag "systemd"
+#    @type systemd
+#  </source>
+#  <match systemd**>
+#    @type kafka2
+#    brokers kafka-host:9092
+#    use_event_time true
+#    topic_key "rsyslog"
+#    default_topic "rsyslog"
+#    required_acks -1
+#    compression_codec "gzip"
+#    <buffer topic>
+#      @type "file"
+#      path "/var/log/td-agent/buffer/td"
+#      flush_interval 3s
+#    </buffer>
+#    <format>
+#      @type "json"
+#    </format>
+#  </match>
