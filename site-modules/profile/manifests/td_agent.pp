@@ -4,7 +4,7 @@ class profile::td_agent () {
 
   user { 'td-agent':
     ensure => 'present',
-    group  => 'systemd-journal',
+    groups => 'systemd-journal',
   }
 
   include fluentd
