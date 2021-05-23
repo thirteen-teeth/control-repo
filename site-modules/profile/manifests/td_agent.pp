@@ -23,7 +23,7 @@ class profile::td_agent () {
       ],
       'match'  => {
         'tag_pattern'       => 'systemd**',
-        'type'              => 'kakfa2',
+        'type'              => 'kafka2',
         'brokers'           => 'kafka-host:9092',
         'use_event_time'    => 'true',
         'topic_key'         => 'rsyslog',
