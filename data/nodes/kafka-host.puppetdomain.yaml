@@ -1,6 +1,7 @@
 ---
 classes:
   - profile::zookeeper
+  - profile::kafka
 
 
 zookeeper::id: '1'
