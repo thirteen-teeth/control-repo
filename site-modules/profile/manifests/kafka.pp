@@ -2,7 +2,8 @@
 
 class profile::kafka (
   String $kafka_version = '2.8.0',
-  String $scala_version = '2.13'
+  String $scala_version = '2.13',
+  String $zookeeper_url = 'localhost:2181',
 ) {
 
   require profile::java
@@ -16,8 +17,15 @@ class profile::kafka (
   class { 'kafka::broker':
     config => {
       'broker.id'         => '1',
-      'zookeeper.connect' => 'localhost:2181'
+      'zookeeper.connect' => $zookeeper_url,
     }
+  }
+
+  kafka::topic { 'test':
+    ensure             => present,
+    zookeeper          => $zookeeper_url,
+    replication_factor => 1,
+    partitions         => 3,
   }
 
 }
