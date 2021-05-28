@@ -19,6 +19,7 @@ mod 'puppetlabs-pwshlib', '0.8.0'
 mod 'puppetlabs-registry', '4.0.0'
 mod 'puppetlabs-yumrepo_core', '1.0.7'
 
+mod 'puppet-kafka', '7.0.0'
 mod 'deric-zookeeper', '1.1.0'
 mod 'puppet-archive', '5.0.0'
 mod 'puppet-cron', '2.0.0'
