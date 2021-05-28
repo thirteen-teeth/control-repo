@@ -9,7 +9,7 @@ class profile::kafka (
   require profile::zookeeper
 
   class { 'kafka':
-    version       => $kafka_version,
+    kafka_version => $kafka_version,
     scala_version => $scala_version,
   }
 
