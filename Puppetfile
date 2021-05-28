@@ -19,10 +19,8 @@ mod 'puppetlabs-pwshlib', '0.8.0'
 mod 'puppetlabs-registry', '4.0.0'
 mod 'puppetlabs-yumrepo_core', '1.0.7'
 
-
-# Modules from Git
-# Examples: https://github.com/puppetlabs/r10k/blob/master/doc/puppetfile.mkd#examples
-#mod 'apache',
-#  git:    'https://github.com/puppetlabs/puppetlabs-apache',
-#  commit: '1b6f89afdde0df7f9433a163d5c4b5328eac5779'
-#  branch: 'docs_experiment'
+mod 'deric-zookeeper', '1.1.0'
+mod 'puppet-archive', '5.0.0'
+mod 'puppet-cron', '2.0.0'
+mod 'puppetlabs-java', '7.0.2'
+mod 'camptocamp-systemd', '3.0.0'
