@@ -26,8 +26,8 @@ class profile::td_agent () {
         'type'              => 'kafka2',
         'brokers'           => 'kafka-host:9092',
         'use_event_time'    => 'true',
-        'topic_key'         => 'rsyslog',
-        'default_topic'     => 'rsyslog',
+        'topic_key'         => 'systemd',
+        'default_topic'     => 'systemd',
         'required_acks'     => '-1',
         'compression_codec' => 'gzip',
         'buffer'            => {

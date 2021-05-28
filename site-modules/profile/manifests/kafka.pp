@@ -21,7 +21,7 @@ class profile::kafka (
     }
   }
 
-  kafka::topic { 'test':
+  kafka::topic { 'systemd':
     ensure             => present,
     zookeeper          => $zookeeper_url,
     replication_factor => 1,
