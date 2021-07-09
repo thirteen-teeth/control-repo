@@ -16,12 +16,14 @@ class profile::kafka (
 
   class { 'kafka::broker':
     config => {
-      'broker.id'         => '1',
-      'zookeeper.connect' => $zookeeper_url,
+      'broker.id'                        => '1',
+      'zookeeper.connect'                => $zookeeper_url,
+      'offsets.topic.replication.factor' => '1',
+
     }
   }
 
-  kafka::topic { 'systemd':
+  kafka::topic { 'test-topic':
     ensure             => present,
     zookeeper          => $zookeeper_url,
     replication_factor => 1,
