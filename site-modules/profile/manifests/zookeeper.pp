@@ -9,6 +9,7 @@ class profile::zookeeper {
     archive_version     => '3.6.3',
     service_provider    => 'systemd',
     manage_service_file => true,
+    id                  => '1'
   }
 
 }
