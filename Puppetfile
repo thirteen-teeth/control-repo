@@ -26,3 +26,5 @@ mod 'puppet-cron', '2.0.0'
 mod 'puppetlabs-java', '7.0.2'
 #mod 'camptocamp-systemd', '3.0.0'
 mod 'camptocamp-systemd', '2.12.0'
+
+mod 'elastic-elasticsearch', '7.0.0'
