@@ -11,3 +11,4 @@ consul::config_hash:
     http: '0.0.0.0'
   ports:
     http: '8500'
+  bind: '0.0.0.0'
