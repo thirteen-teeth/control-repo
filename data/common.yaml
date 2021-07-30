@@ -4,6 +4,7 @@ profile::base::packages:
   - 'unzip'
   - 'bash-completion'
   - 'setroubleshoot'
+  - 'jq'
 
 consul::config_hash:
   data_dir: '/opt/consul'
