@@ -1,9 +1,18 @@
 ---
-classes:
-  - 'profile::base'
-
 profile::base::packages:
   - 'vim'
   - 'unzip'
   - 'bash-completion'
   - 'setroubleshoot'
+
+consul::config_hash:
+  data_dir: '/opt/consul'
+  datacenter: 'vagrant'
+  log_level: 'INFO'
+  node_name: '%{facts.fqdn}'
+  retry_join: 'consul-01.puppetdomain'
+
+#lookup_options:
+#  consul::config_hash:
+#    merge:
+#      strategy: hash

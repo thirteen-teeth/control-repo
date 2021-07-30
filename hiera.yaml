@@ -9,22 +9,18 @@ hierarchy:
   - name: "Per-node data"
     paths:
       - "nodes/%{trusted.certname}.yaml"
-
   - name: "Roles"
     paths:
       - "role/%{trusted.extensions.pp_role}.yaml"
       - "role/%{role}.yaml"
-
   - name: "Environment"
     paths:
       - "environment/%{trusted.extensions.pp_environment}.yaml"
-
   - name: "Location"
     paths:
       - "location/%{trusted.extensions.pp_datacenter}.yaml"
       - "location/%{facts.datacenter}.yaml"
       - "location/%{facts.location}.yaml"
-
   - name: "Common"
     paths:
       - "common.yaml"

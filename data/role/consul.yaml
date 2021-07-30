@@ -1,0 +1,10 @@
+---
+consul::config_hash:
+  data_dir: '/opt/consul'
+  datacenter: 'vagrant'
+  log_level: 'INFO'
+  node_name: '%{facts.fqdn}'
+  server: true
+  ui: true
+  bootstrap_expect: 1
+  client_addr: '0.0.0.0'
