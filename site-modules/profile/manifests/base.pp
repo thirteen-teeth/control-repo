@@ -1,6 +1,6 @@
 # Base profile applied to all nodes
-class profile::base {
-
-  ensure_packages(['vim','bash-completion'], {'ensure' => 'present'})
-
+class profile::base (
+  Array $packages = [],
+) {
+  ensure_packages($packages, {'ensure' => 'present'})
 }
