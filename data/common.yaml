@@ -6,6 +6,7 @@ profile::base::packages:
   - 'setroubleshoot'
   - 'jq'
 
+consul::version: '1.10.1'
 consul::config_hash:
   data_dir: '/opt/consul'
   datacenter: 'vagrant'
