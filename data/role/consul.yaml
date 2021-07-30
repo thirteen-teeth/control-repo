@@ -7,5 +7,7 @@ consul::config_hash:
   server: true
   ui: true
   bootstrap_expect: 1
-  client_addr: '0.0.0.0'
-  bind: '0.0.0.0'
+  addresses:
+    http: '0.0.0.0'
+  ports:
+    http: '8500'
