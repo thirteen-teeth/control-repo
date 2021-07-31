@@ -11,4 +11,4 @@ consul::config_hash:
     http: '0.0.0.0'
   ports:
     http: '8500'
-  advertise_addr: '%{facts.networking.eth1.ip}'
+  advertise_addr: '%{facts.networking.interfaces.eth1.ip}'
