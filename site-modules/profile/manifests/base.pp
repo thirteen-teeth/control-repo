@@ -4,9 +4,13 @@ class profile::base (
 ) {
   include profile::consul
 
+  stage { 'pre':
+    before => Stage['main'],
+  }
+
   package { $packages:
     ensure => latest,
-    stage  => first,
+    stage  => 'pre',
   }
 
 }
