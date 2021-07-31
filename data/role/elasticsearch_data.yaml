@@ -1,5 +1,5 @@
 ---
-elasticstack::repo::oss: true
+elastic_stack::repo::oss: true
 
 elasticsearch::version: '7.10.2'
 elasticsearch::manage_repo: true
