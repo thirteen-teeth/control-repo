@@ -14,6 +14,11 @@ consul::config_hash:
   node_name: '%{facts.fqdn}'
   retry_join:
     - 'consul-01.puppetdomain'
+  addresses:
+    http: '0.0.0.0'
+  ports:
+    http: '8500'
+  advertise_addr: '%{facts.networking.interfaces.eth1.ip}'
 
 #lookup_options:
 #  consul::config_hash:
