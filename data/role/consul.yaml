@@ -5,7 +5,8 @@ consul::config_hash:
   log_level: 'INFO'
   node_name: '%{facts.fqdn}'
   server: true
-  ui_config.enabled: true
+  ui_config:
+    enabled: true
   bootstrap_expect: 1
   addresses:
     http: '0.0.0.0'
