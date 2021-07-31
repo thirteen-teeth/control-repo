@@ -1,0 +1,41 @@
+---
+elasticsearch::version: '7.10.2'
+elasticsearch::manage_repo: true
+elasticsearch::oss: true
+elasticsearch::restart_on_change: true
+elasticsearch::api_host: '%{facts.networking.ip}'
+elasticsearch::jvm_options:
+  - '-Xms2g'
+  - '-Xmx2g'
+elasticsearch::config:
+  cluster.name: '%{trusted.extensions.pp_environment}'
+  node.name: '%{facts.fqdn}'
+  network.host: 0.0.0.0
+  node.roles:
+    - 'data'
+
+#installs https://github.com/prometheus-community/elasticsearch_exporter
+#prometheus::elasticsearch_exporter::version: '1.2.1'
+#prometheus::elasticsearch_exporter::download_url: "http://%{profile::subscription_manager::server_name}/pulp/isos/Default_Organization/Library/custom/LMM/Prometheus/elasticsearch_exporter-1.2.1.linux-amd64.tar.gz"
+#prometheus::elasticsearch_exporter::install_method: 'url'
+#prometheus::elasticsearch_exporter::bin_dir: '/opt'
+
+consul::services:
+  elasticsearch:
+    address: '%{facts.fqdn}'
+    port: 9200
+    checks:
+      - http: 'http://localhost:9200'
+        interval: '30s'
+        timeout: '10s'
+    tags:
+      - 'elasticsearch'
+      - 'lmm'
+      - 'cluster::%{trusted.extensions.pp_environment}'
+#  elasticsearch_exporter:
+#    address: '%{facts.fqdn}'
+#    port: 9114
+#    tags:
+#      - 'elasticsearch_exporter'
+#      - 'lmm'
+#      - 'cluster::%{trusted.extensions.pp_environment}'
