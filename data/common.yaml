@@ -20,7 +20,7 @@ consul::config_hash:
     http: '8500'
   advertise_addr: '%{facts.networking.interfaces.eth1.ip}'
 
-#lookup_options:
-#  consul::config_hash:
-#    merge:
-#      strategy: hash
+lookup_options:
+  elasticsearch::config:
+    merge:
+      strategy: hash
