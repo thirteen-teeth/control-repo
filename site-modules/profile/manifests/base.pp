@@ -3,9 +3,5 @@ class profile::base (
   Array $packages = [],
 ) {
   include profile::consul
-
-  package { $packages:
-    ensure => latest,
-  }
-
+  ensure_packages($packages,{'ensure' => 'latest'})
 }

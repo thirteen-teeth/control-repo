@@ -1,5 +1,5 @@
 #use hiera
 class profile::consul () {
-  require profile::base
+  ensure_packages(['unzip'], {'ensure' => 'latest'})
   include consul
 }
