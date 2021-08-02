@@ -3,6 +3,5 @@ class profile::base (
   Array $packages = [],
 ) {
   include profile::consul
-  include prometheus
   ensure_packages($packages,{'ensure' => 'latest'})
 }
