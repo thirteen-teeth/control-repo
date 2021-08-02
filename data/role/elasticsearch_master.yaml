@@ -34,10 +34,10 @@ consul::services:
       - 'elasticsearch'
       - 'lmm'
       - 'cluster::%{trusted.extensions.pp_environment}'
-#  elasticsearch_exporter:
-#    address: '%{facts.fqdn}'
-#    port: 9114
-#    tags:
-#      - 'elasticsearch_exporter'
-#      - 'lmm'
-#      - 'cluster::%{trusted.extensions.pp_cluster}'
+  elasticsearch_exporter:
+    address: '%{facts.fqdn}'
+    port: 9114
+    tags:
+      - 'elasticsearch_exporter'
+      - 'vagrant'
+      - 'cluster::%{trusted.extensions.pp_environment}'

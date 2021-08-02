@@ -17,10 +17,10 @@ elasticsearch::config:
     - 'data'
 
 #installs https://github.com/prometheus-community/elasticsearch_exporter
-#prometheus::elasticsearch_exporter::version: '1.2.1'
-#prometheus::elasticsearch_exporter::download_url: "http://%{profile::subscription_manager::server_name}/pulp/isos/Default_Organization/Library/custom/LMM/Prometheus/elasticsearch_exporter-1.2.1.linux-amd64.tar.gz"
-#prometheus::elasticsearch_exporter::install_method: 'url'
-#prometheus::elasticsearch_exporter::bin_dir: '/opt'
+prometheus::elasticsearch_exporter::download_url: "https://github.com/prometheus-community/elasticsearch_exporter/releases/download/v1.2.1/elasticsearch_exporter-1.2.1.linux-amd64.tar.gz"
+prometheus::elasticsearch_exporter::version: '1.2.1'
+prometheus::elasticsearch_exporter::install_method: 'url'
+prometheus::elasticsearch_exporter::bin_dir: '/opt'
 
 consul::services:
   elasticsearch:
@@ -32,12 +32,12 @@ consul::services:
         timeout: '10s'
     tags:
       - 'elasticsearch'
-      - 'lmm'
+      - 'vagrant'
       - 'cluster::%{trusted.extensions.pp_environment}'
-#  elasticsearch_exporter:
-#    address: '%{facts.fqdn}'
-#    port: 9114
-#    tags:
-#      - 'elasticsearch_exporter'
-#      - 'lmm'
-#      - 'cluster::%{trusted.extensions.pp_environment}'
+  elasticsearch_exporter:
+    address: '%{facts.fqdn}'
+    port: 9114
+    tags:
+      - 'elasticsearch_exporter'
+      - 'vagrant'
+      - 'cluster::%{trusted.extensions.pp_environment}'
