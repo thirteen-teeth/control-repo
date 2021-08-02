@@ -1,6 +1,5 @@
 ---
 elastic_stack::repo::oss: true
-
 elasticsearch::version: '7.10.2'
 elasticsearch::manage_repo: true
 elasticsearch::oss: true
@@ -23,7 +22,7 @@ prometheus::elasticsearch_exporter::install_method: 'url'
 prometheus::elasticsearch_exporter::bin_dir: '/opt'
 
 consul::services:
-  elasticsearch:
+  elasticsearch_master:
     address: '%{facts.fqdn}'
     port: 9200
     checks:
@@ -31,8 +30,8 @@ consul::services:
         interval: '30s'
         timeout: '10s'
     tags:
-      - 'elasticsearch'
-      - 'lmm'
+      - 'elasticsearch_master'
+      - 'vagrant'
       - 'cluster::%{trusted.extensions.pp_environment}'
   elasticsearch_exporter:
     address: '%{facts.fqdn}'
