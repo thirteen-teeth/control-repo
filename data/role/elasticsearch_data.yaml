@@ -22,7 +22,7 @@ prometheus::elasticsearch_exporter::install_method: 'url'
 prometheus::elasticsearch_exporter::bin_dir: '/opt'
 
 consul::services:
-  elasticsearch_data
+  elasticsearch_data:
     address: '%{facts.fqdn}'
     port: 9200
     checks:
