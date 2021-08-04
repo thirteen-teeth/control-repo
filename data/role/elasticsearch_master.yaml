@@ -4,7 +4,9 @@ elasticsearch::manage_repo: true
 elasticsearch::restart_on_change: true
 elasticsearch::api_host: '%{facts.networking.ip}'
 elasticsearch::ssl: true
-elasticsearch::keystore_path: '/opt/keystore.jks'
+elasticsearch::ca_certificate: '/etc/puppetlabs/puppet/ssl/certs/ca.pem'
+elasticsearch::certificate: '/etc/puppetlabs/puppet/ssl/certs/%{facts.fqdn}.pem'
+elasticsearch::private_key: '/etc/puppetlabs/puppet/ssl/private_keys/%{facts.fqdn}.pem'
 elasticsearch::keystore_password: 'strongpassword'
 elasticsearch::jvm_options:
   - '-Xms4g'
