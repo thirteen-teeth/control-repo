@@ -4,8 +4,10 @@ class profile::java_ks (
   String $truststore = '/opt/truststore.jks',
   String $keystore   = '/opt/keystore.jks',
   String $password   = 'strongpassword', #TODO: SECRET
-  String $ssldir     = $facts['puppet_ssldir'],
+  String $ssldir     = '/etc/puppetlabs/puppet/ssl',
 ) {
+
+  include profile::java
 
   Java_ks {
     ensure   => latest,
