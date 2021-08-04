@@ -24,7 +24,7 @@ class profile::elasticsearch (
 
   file_line { 'JAVA_HOME':
     path => '/etc/sysconfig/elasticsearch',
-    line => 'JAVA_HOME=/usr/lib/jvm/jre/bin',
+    line => 'ES_JAVA_HOME=/usr/lib/jvm/jre/bin',
   }
 
 }
