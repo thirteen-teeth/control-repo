@@ -22,7 +22,7 @@ class profile::elasticsearch (
     provider   => 'posixacl',
   }
 
-  file_line { 'JAVA_HOME':
+  file_line { 'ES_JAVA_HOME':
     path => '/etc/sysconfig/elasticsearch',
     line => 'ES_JAVA_HOME=/usr/lib/jvm/jre/bin',
   }
