@@ -8,7 +8,6 @@ class profile::elasticsearch (
   include elastic_stack::repo
   include prometheus::elasticsearch_exporter
   include profile::java
-  include profile::java_ks
 
   posix_acl { $ssl_dir:
     action     => set,
@@ -23,5 +22,9 @@ class profile::elasticsearch (
     provider   => 'posixacl',
   }
 
+  file_line { 'JAVA_HOME':
+    path => '/etc/sysconfig/elasticsearch',
+    line => 'JAVA_HOME=/usr/lib/jvm/jre/bin',
+  }
 
 }
