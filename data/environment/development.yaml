@@ -4,9 +4,6 @@ elasticsearch::config:
     - 'es-master-01.puppetdomain'
     - 'es-master-02.puppetdomain'
     - 'es-master-03.puppetdomain'
-    - 'es-data-01.puppetdomain'
-    - 'es-data-02.puppetdomain'
-    - 'es-data-03.puppetdomain'
   cluster.initial_master_nodes:
     - 'es-master-01.puppetdomain'
     - 'es-master-02.puppetdomain'

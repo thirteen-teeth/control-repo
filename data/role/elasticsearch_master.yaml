@@ -1,19 +1,22 @@
 ---
-elastic_stack::repo::oss: true
 elasticsearch::version: '7.10.2'
 elasticsearch::manage_repo: true
-elasticsearch::oss: true
 elasticsearch::restart_on_change: true
 elasticsearch::api_host: '%{facts.networking.ip}'
 elasticsearch::jvm_options:
-  - '-Xms2g'
-  - '-Xmx2g'
+  - '-Xms4g'
+  - '-Xmx4g'
 elasticsearch::config:
   cluster.name: '%{trusted.extensions.pp_environment}'
   node.name: '%{facts.fqdn}'
   network.host: 0.0.0.0
   node.roles:
     - 'master'
+    - 'data'
+  xpack.license.self_generated.type: 'basic'
+  xpack.security.enabled: true
+  xpack.security.http.ssl.enabled: true
+  xpack.security.authc.token.enabled: true
 
 #installs https://github.com/prometheus-community/elasticsearch_exporter
 prometheus::elasticsearch_exporter::download_url: "https://github.com/prometheus-community/elasticsearch_exporter/releases/download/v1.2.1/elasticsearch_exporter-1.2.1.linux-amd64.tar.gz"
