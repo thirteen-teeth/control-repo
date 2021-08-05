@@ -19,8 +19,6 @@ elasticsearch::config:
     - 'master'
     - 'data'
   xpack.license.self_generated.type: 'basic'
-  xpack.security.enabled: true
-  xpack.security.http.ssl.enabled: true
 
 #installs https://github.com/prometheus-community/elasticsearch_exporter
 prometheus::elasticsearch_exporter::download_url: "https://github.com/prometheus-community/elasticsearch_exporter/releases/download/v1.2.1/elasticsearch_exporter-1.2.1.linux-amd64.tar.gz"
