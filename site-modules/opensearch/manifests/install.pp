@@ -1,6 +1,8 @@
 #comment
 class opensearch::install {
 
+  $fix_permissions = 'install dir permissions fix'
+
   user { $opensearch::username:
     ensure => $opensearch::ensure,
     shell  => '/sbin/nologin',
@@ -22,8 +24,6 @@ class opensearch::install {
     require      => User[$opensearch::username],
     notify       => $fix_permissions,
   }
-
-  $fix_permissions = 'install dir permissions fix'
 
   exec { $fix_permissions:
     command     => "chown -R ${opensearch::username}:${opensearch::username} ${opensearch::install_dir}",
