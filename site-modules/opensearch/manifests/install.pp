@@ -8,7 +8,7 @@ class opensearch::install {
 
   #set defaults 
   File {
-    user  => $opensearch::username,
+    owner => $opensearch::username,
     group => $opensearch::username,
   }
 
