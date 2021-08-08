@@ -11,6 +11,7 @@ class opensearch::install {
     group => $opensearch::username,
   }
 
+  Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
 
   archive { "${opensearch::download_target_dir}/${opensearch::artifact_name}":
     ensure       => $opensearch::ensure,
@@ -18,9 +19,15 @@ class opensearch::install {
     extract_path => $opensearch::extract_dir,
     source       => $opensearch::artifact_full_url,
     creates      => $opensearch::install_dir,
-    user         => $opensearch::username,
-    group        => $opensearch::username,
     require      => User[$opensearch::username],
+    notify       => $fix_permissions,
+  }
+
+  $fix_permissions = 'install dir permissions fix'
+
+  exec { $fix_permissions:
+    command     => "chown -R ${opensearch::username}:${opensearch::username} ${opensearch::install_dir}",
+    refreshonly => true,
   }
 
 }
