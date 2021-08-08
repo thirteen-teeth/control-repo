@@ -8,6 +8,8 @@ class opensearch (
   String $download_target_dir = '/opt',
   String $extract_dir = '/opt',
   String $install_dir = "${extract_dir}/opensearch-${version}",
+  Boolean $manage_user = true,
+  Boolean $manage_systemd = true,
 ) {
   include opensearch::install
 }
