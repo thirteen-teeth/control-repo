@@ -25,8 +25,9 @@ class opensearch::install {
   }
 
   file { $opensearch::install_dir:
-    ensure => directory,
-    mode   => '0755',
+    ensure  => directory,
+    mode    => '0755',
+    recurse => true,
   }
 
 }
