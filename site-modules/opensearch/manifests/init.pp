@@ -10,6 +10,7 @@ class opensearch (
   String $install_dir = "${extract_dir}/opensearch-${version}",
   Boolean $manage_user = true,
   Boolean $manage_systemd = true,
+  String $username = 'opensearch',
 ) {
   include opensearch::install
 }
