@@ -22,7 +22,7 @@ class opensearch::install {
     source       => $opensearch::artifact_full_url,
     creates      => $opensearch::install_dir,
     require      => User[$opensearch::username],
-    notify       => $fix_permissions,
+    notify       => Exec[$fix_permissions],
   }
 
   exec { $fix_permissions:
