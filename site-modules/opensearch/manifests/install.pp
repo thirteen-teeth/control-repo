@@ -6,6 +6,13 @@ class opensearch::install {
     shell  => '/sbin/nologin',
   }
 
+  #set defaults 
+  File {
+    user  => $opensearch::username,
+    group => $opensearch::username,
+  }
+
+
   archive { "${opensearch::download_target_dir}/${opensearch::artifact_name}":
     ensure       => $opensearch::ensure,
     extract      => true,
@@ -15,6 +22,11 @@ class opensearch::install {
     user         => $opensearch::username,
     group        => $opensearch::username,
     require      => User[$opensearch::username],
+  }
+
+  file { $opensearch::install_dir:
+    ensure => directory,
+    mode   => '0755',
   }
 
 }
