@@ -21,7 +21,6 @@ class opensearch::install {
     mode   => '0750',
   }
 
-
   Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
   archive { "${opensearch::download_target_dir}/${opensearch::artifact_name}":
     ensure       => $opensearch::ensure,
@@ -38,3 +37,5 @@ class opensearch::install {
   }
 
 }
+
+#openssl x509 -subject -nameopt RFC2253 -noout -in
