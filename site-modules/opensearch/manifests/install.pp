@@ -12,9 +12,17 @@ class opensearch::install {
     owner => $opensearch::username,
     group => $opensearch::username,
   }
+  file { $opensearch::log_dir:
+    ensure => $opensearch::ensure,
+    mode   => '0750',
+  }
+  file { $opensearch::data_dir:
+    ensure => $opensearch::ensure,
+    mode   => '0750',
+  }
+
 
   Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
-
   archive { "${opensearch::download_target_dir}/${opensearch::artifact_name}":
     ensure       => $opensearch::ensure,
     extract      => true,
@@ -24,7 +32,6 @@ class opensearch::install {
     require      => User[$opensearch::username],
     notify       => Exec[$fix_permissions],
   }
-
   exec { $fix_permissions:
     command     => "chown -R ${opensearch::username}:${opensearch::username} ${opensearch::install_dir}",
     refreshonly => true,

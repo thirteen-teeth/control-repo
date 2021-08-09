@@ -2,8 +2,8 @@
 opensearch::config_hash:
   cluster.name: vagrant
   node.name: "%{::fqdn}"
-  path.data: "%{opensearch::data_dir}"
-  path.logs: "%{opensearch::log_dir}"
+  path.data: "/var/lib/opensearch"
+  path.logs: "/var/log/opensearch"
   bootstrap.memory_lock: true
   network.host: '0.0.0.0'
   http.port: '9200'
