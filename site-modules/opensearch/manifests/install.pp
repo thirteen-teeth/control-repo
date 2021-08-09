@@ -6,6 +6,7 @@ class opensearch::install {
   user { $opensearch::username:
     ensure => $opensearch::ensure,
     shell  => '/sbin/nologin',
+    groups => ['puppet'],
   }
 
   File {
