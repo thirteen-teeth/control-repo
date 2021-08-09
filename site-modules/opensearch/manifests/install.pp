@@ -13,11 +13,11 @@ class opensearch::install {
     group => $opensearch::username,
   }
   file { $opensearch::log_dir:
-    ensure => $opensearch::ensure,
+    ensure => 'directory',
     mode   => '0750',
   }
   file { $opensearch::data_dir:
-    ensure => $opensearch::ensure,
+    ensure => 'directory',
     mode   => '0750',
   }
 
