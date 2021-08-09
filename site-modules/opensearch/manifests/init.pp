@@ -14,7 +14,7 @@ class opensearch (
   String $config_dir = "${install_dir}/config",
   String $log_dir = '/var/log/opensearch',
   String $data_dir = '/var/lib/opensearch',
-  Hash $config_hash = {},
+  Hash $config_hash,
 ) {
   contain opensearch::install
   contain opensearch::config

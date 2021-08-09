@@ -1,5 +1,5 @@
 ---
-opensearch::cluster_hash:
+opensearch::config_hash:
   cluster.name: vagrant
   node.name: "%{::fqdn}"
   path.data: "%{opensearch::data_dir}"

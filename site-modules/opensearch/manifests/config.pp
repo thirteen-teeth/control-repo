@@ -3,6 +3,10 @@ class opensearch::config {
 
   $config_hash = $opensearch::config_hash
 
+  file { '/tmp/outfile':
+    content => $config_hash
+  }
+
   if $opensearch::ensure == 'present' {
     $managed_files = ['opensearch.yml']
     $managed_files.each | String $filename | {
