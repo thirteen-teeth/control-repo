@@ -11,6 +11,11 @@ class opensearch (
   Boolean $manage_user = true,
   Boolean $manage_systemd = true,
   String $username = 'opensearch',
+  String $config_dir = "${install_dir}/config",
+  Hash $config_hash = {},
 ) {
-  include opensearch::install
+  contain opensearch::install
+  contain opensearch::config
+
+  Class['opensearch::install'] ~> Class['opensearch::config']
 }
