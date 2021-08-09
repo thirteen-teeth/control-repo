@@ -1,0 +1,13 @@
+---
+opensearch::cluster_hash:
+  cluster.name: vagrant
+  node.name: "%{::fqdn}"
+  path.data: "%{opensearch::data_dir}"
+  path.logs: "%{opensearch::log_dir}"
+  bootstrap.memory_lock: true
+  network.host: '0.0.0.0'
+  http.port: '9200'
+  discovery.seed_hosts: ['os-master-01', 'os-master-02', 'os-master-03']
+  cluster.initial_master_nodes: ['os-master-01', 'os-master-02', 'os-master-03']
+  gateway.recover_after_nodes: '3'
+  action.destructive_requires_name: 'true'
