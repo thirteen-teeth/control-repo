@@ -1,0 +1,9 @@
+#class for vault
+
+class profile::vault () {
+
+  class { 'vault':
+    version => '1.8.1',
+  }
+
+}
