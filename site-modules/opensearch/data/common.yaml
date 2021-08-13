@@ -3,16 +3,16 @@ opensearch::version: '1.0.0'
 opensearch::ensure: 'present'
 opensearch::artifact_base_url: 'https://artifacts.opensearch.org/releases/bundle/opensearch'
 opensearch::artifact_name: "opensearch-%{lookup('opensearch::version')}-linux-x64.tar.gz"
-opensearch::$artifact_full_url: "%{lookup('opensearch::artifact_base_url')}/%{lookup('opensearch::version')}//opensearch-%{lookup('opensearch::version')}-linux-x64.tar.gz"
-opensearch::$download_target_dir: '/opt'
-opensearch::$extract_dir: '/opt'
-opensearch::$install_dir: "%{lookup('opensearch::extract_dir')}/opensearch-%{lookup('opensearch::version')}"
-Boolean $manage_user: true
-Boolean $manage_systemd: true
-opensearch::$username: 'opensearch'
-opensearch::$config_dir: "%{lookup('opensearch::install_dir')}/config"
-opensearch::$log_dir: '/var/log/opensearch'
-opensearch::$data_dir: '/var/lib/opensearch'
+opensearch::artifact_full_url: "%{lookup('opensearch::artifact_base_url')}/%{lookup('opensearch::version')}//opensearch-%{lookup('opensearch::version')}-linux-x64.tar.gz"
+opensearch::download_target_dir: '/opt'
+opensearch::extract_dir: '/opt'
+opensearch::install_dir: "%{lookup('opensearch::extract_dir')}/opensearch-%{lookup('opensearch::version')}"
+opensearch::manage_user: true
+opensearch::manage_systemd: true
+opensearch::username: 'opensearch'
+opensearch::config_dir: "%{lookup('opensearch::install_dir')}/config"
+opensearch::log_dir: '/var/log/opensearch'
+opensearch::data_dir: '/var/lib/opensearch'
 opensearch::config_hash:
   cluster.name: 'vagrant'
   node.name: "%{::fqdn}"
