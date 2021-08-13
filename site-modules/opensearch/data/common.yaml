@@ -13,7 +13,7 @@ opensearch::$username: 'opensearch'
 opensearch::$config_dir: "%{lookup('opensearch::install_dir')}/config"
 opensearch::$log_dir: '/var/log/opensearch'
 opensearch::$data_dir: '/var/lib/opensearch'
-  opensearch::config_hash:
+opensearch::config_hash:
   cluster.name: 'vagrant'
   node.name: "%{::fqdn}"
   path.data: '/var/lib/opensearch'
