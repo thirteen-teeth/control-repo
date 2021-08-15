@@ -1,0 +1,12 @@
+---
+
+vault::version: '1.8.1'
+vault::enable_ui: true
+vault::listener:
+  - tcp:
+      address: 0.0.0.0:8200
+      tls_disable: 0
+vault::default_lease_ttl: 720h
+vault::storage:
+  file:
+    path: '/var/lib/vault'
