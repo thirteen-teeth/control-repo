@@ -10,4 +10,4 @@ vault::default_lease_ttl: 720h
 vault::storage:
   file:
     path: '/var/lib/vault'
-vault::api_addr: "%{facts.fqdn}"
+vault::api_addr: "%{facts.fqdn}:8200"
