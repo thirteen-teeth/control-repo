@@ -9,6 +9,7 @@ vault::listener:
       tls_disable: 1
 vault::default_lease_ttl: 720h
 vault::storage:
-  file:
-    path: '/var/lib/vault'
+  consul:
+    address: 'consul-01.puppetdomain:8500'
+    path: 'vault'
 vault::api_addr: "%{facts.fqdn}:8200"
