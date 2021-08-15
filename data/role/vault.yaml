@@ -10,7 +10,6 @@ vault::listener:
 vault::default_lease_ttl: 720h
 vault::storage:
   consul:
-    address: 'localhost:8500'
+    address: '127.0.0.1:8500'
     path: 'vault/'
-    service_address: "%{facts.fqdn}:8200"
-vault::api_addr: "%{facts.fqdn}:8200"
+vault::api_addr: "http://%{facts.fqdn}:8200"
