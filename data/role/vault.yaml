@@ -11,3 +11,4 @@ vault::storage:
   file:
     path: '/var/lib/vault'
 vault::api_addr: "%{facts.fqdn}:8200"
+vault::log_level: 'info'
