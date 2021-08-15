@@ -10,7 +10,7 @@ vault::listener:
 vault::default_lease_ttl: 720h
 vault::storage:
   consul:
-    address: 'consul-01.puppetdomain:8500'
+    address: 'localhost:8500'
     path: 'vault/'
     service_address: "%{facts.fqdn}:8200"
 vault::api_addr: "%{facts.fqdn}:8200"
