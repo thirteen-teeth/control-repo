@@ -1,6 +1,7 @@
 ---
 
 vault::version: '1.8.1'
+vault::install_method: 'archive'
 vault::enable_ui: true
 vault::listener:
   - tcp:
@@ -11,4 +12,3 @@ vault::storage:
   file:
     path: '/var/lib/vault'
 vault::api_addr: "%{facts.fqdn}:8200"
-vault::log_level: 'info'
