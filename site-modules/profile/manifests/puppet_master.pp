@@ -7,5 +7,6 @@ class profile::puppet_master {
   }
 
   include puppetdb
+  include puppetdb::database::postgresql
 
 }
