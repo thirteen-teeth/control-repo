@@ -1,5 +1,5 @@
 ---
 puppetdb::listen_address: 0.0.0.0
 puppetdb::manage_firewall: false
-puppetdb::manage_package_repo: false
+puppetdb::manage_package_repo: true
 puppetdb::postgres_version: '10.17'
