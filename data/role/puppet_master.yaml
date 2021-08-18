@@ -2,4 +2,5 @@
 puppetdb::listen_address: 0.0.0.0
 puppetdb::manage_firewall: false
 puppetdb::manage_package_repo: true
-#puppetdb::postgres_version: '13'
+puppetdb::postgres_version: '13'
+postgresql::globals::server_package_name: 'postgresql-server'
