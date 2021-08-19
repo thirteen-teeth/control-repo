@@ -3,26 +3,4 @@ puppetdb::listen_address: 0.0.0.0
 puppetdb::manage_firewall: false
 puppetdb::manage_package_repo: false
 puppetdb::postgres_version: '13'
-
-#postgresql::globals::client_package_name: 
-#postgresql::globals::client_package_name: 
-#postgresql::globals::client_package_name: 
-#postgresql::globals::client_package_name: 'postgres'
-#postgresql::globals::server_package_name: 'postgresql-server'
-#postgresql::globals::contrib_package_name: 
-#postgresql::globals::devel_package_name: 
-#postgresql::globals::java_package_name: 
-#postgresql::globals::docs_package_name: 
-#postgresql::globals::perl_package_name: 
-#postgresql::globals::plperl_package_name: 
-#postgresql::globals::plpython_package_name: 
-#postgresql::globals::python_package_name: 
-#postgresql::globals::postgis_package_name: 
-#
-#postgresql::globals::datadir: '/var/lib/pgsql/data'
-#postgresql::globals::manage_datadir: true
-#postgresql::globals::confdir: '/etc/postgresql-setup'
-##postgresql::globals::bindir:
-##postgresql::globals::xlogdir:
-#postgresql::globals::logdir: '/var/log/psql'
-#postgresql::globals::manage_logdir: true
+puppetdb::puppetdb_version: '7.5.2'
