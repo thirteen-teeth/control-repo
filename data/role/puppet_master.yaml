@@ -17,7 +17,8 @@ podman::containers:
         - 'PUPPETDB_CERT=/etc/puppetlabs/puppetdb/ssl/public.pem'
       volume: '/etc/puppetlabs/puppetdb:/etc/puppetlabs/puppetdb'
       publish: '8888:80'
-      privileged: true
+      privileged:
+        - 'true'
     service_flags:
       timeout: '60'
 
