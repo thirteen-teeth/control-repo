@@ -16,6 +16,7 @@ podman::containers:
         - "PUPPETDB_KEY=/etc/puppetlabs/puppet/ssl/private_keys/%{facts.fqdn}.pem"
         - "PUPPETDB_CERT=/etc/puppetlabs/puppet/ssl/certs/%{facts.fqdn}.pem"
       volume: '/etc/puppetlabs/puppet/ssl:/etc/puppetlabs/puppet/ssl'
+      publish: '8888:80'
     service_flags:
       timeout: '60'
 
@@ -29,5 +30,12 @@ consul::services:
         timeout: '10s'
     tags:
       - 'puppetserver'
-      - 'puppet'
-      - 'vagrant'
+  puppetdb:
+    address: "%{facts.fqdn}"
+    port: 8081
+    checks:
+      - tcp: 'localhost:8081'
+        interval: '30s'
+        timeout: '10s'
+    tags:
+      - 'puppetdb'
