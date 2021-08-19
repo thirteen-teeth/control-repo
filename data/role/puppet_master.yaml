@@ -39,3 +39,12 @@ consul::services:
         timeout: '10s'
     tags:
       - 'puppetdb'
+  puppetboard:
+    address: "%{facts.fqdn}"
+    port: 8888
+    checks:
+      - tcp: 'localhost:8888'
+        interval: '30s'
+        timeout: '10s'
+    tags:
+      - 'puppetboard'
