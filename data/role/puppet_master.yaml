@@ -5,9 +5,23 @@ puppetdb::manage_package_repo: false
 puppetdb::postgres_version: '13'
 puppetdb::globals::puppetdb_version: '7.5.2'
 
+podman::containers:
+  'logstash-onprem-1':
+    image: 'ghcr.io/voxpupuli/puppetboard'
+    volume: '/etc/puppetlabs/puppet/ssl:/etc/puppetlabs/puppet/ssl'
+    flags:
+      env:
+        - "PUPPETDB_HOST=%{facts.fqdn}"
+        - 'PUPPETDB_PORT=8081'
+        - "PUPPETDB_SSL_VERIFY=/etc/puppetlabs/puppet/ssl/certs/ca.pem"
+        - "PUPPETDB_KEY=/etc/puppetlabs/puppet/ssl/private_keys/%{facts.fqdn}.pem"
+        - "PUPPETDB_CERT=/etc/puppetlabs/puppet/ssl/certs/%{facts.fqdn}.pem"
+    service_flags:
+      timeout: '60' 
+
 consul::services:
   puppetserver:
-    address: '%{facts.fqdn}'
+    address: "%{facts.fqdn}"
     port: 8140
     checks:
       - tcp: 'localhost:8140'
