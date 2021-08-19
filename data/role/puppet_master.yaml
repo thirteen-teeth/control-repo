@@ -4,3 +4,10 @@ puppetdb::manage_firewall: false
 puppetdb::manage_package_repo: true
 puppetdb::postgres_version: '13'
 postgresql::globals::server_package_name: 'postgresql-server'
+postgresql::globals::datadir: '/var/lib/pgsql/data'
+postgresql::globals::manage_datadir: true
+postgresql::globals::confdir: '/etc/postgresql-setup'
+#postgresql::globals::bindir:
+#postgresql::globals::xlogdir:
+postgresql::globals::logdir: '/var/log/psql'
+postgresql::globals::manage_logdir: true
