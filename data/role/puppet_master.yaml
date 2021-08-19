@@ -6,9 +6,8 @@ puppetdb::postgres_version: '13'
 puppetdb::globals::puppetdb_version: '7.5.2'
 
 podman::containers:
-  'logstash-onprem-1':
+  'puppetboard':
     image: 'ghcr.io/voxpupuli/puppetboard'
-    volume: '/etc/puppetlabs/puppet/ssl:/etc/puppetlabs/puppet/ssl'
     flags:
       env:
         - "PUPPETDB_HOST=%{facts.fqdn}"
@@ -16,8 +15,9 @@ podman::containers:
         - "PUPPETDB_SSL_VERIFY=/etc/puppetlabs/puppet/ssl/certs/ca.pem"
         - "PUPPETDB_KEY=/etc/puppetlabs/puppet/ssl/private_keys/%{facts.fqdn}.pem"
         - "PUPPETDB_CERT=/etc/puppetlabs/puppet/ssl/certs/%{facts.fqdn}.pem"
+      volume: '/etc/puppetlabs/puppet/ssl:/etc/puppetlabs/puppet/ssl'
     service_flags:
-      timeout: '60' 
+      timeout: '60'
 
 consul::services:
   puppetserver:
