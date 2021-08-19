@@ -8,7 +8,7 @@ puppetdb::globals::puppetdb_version: '7.5.2'
 #puppetboard::manage_virtualenv: true
 #puppetboard::manage_git: true
 puppetboard::default_environment: 'production'
-puppetboard::python_version: '3.6'
+puppetboard::python_version: '3'
 
 consul::services:
   puppetserver:
