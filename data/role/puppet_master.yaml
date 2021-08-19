@@ -4,3 +4,20 @@ puppetdb::manage_firewall: false
 puppetdb::manage_package_repo: false
 puppetdb::postgres_version: '13'
 puppetdb::globals::puppetdb_version: '7.5.2'
+
+puppetboard::manage_virtualenv: true
+puppetboard::manage_git: true
+puppetboard::default_environment: 'production'
+
+consul::services:
+  puppetserver:
+    address: '%{facts.fqdn}'
+    port: 8140
+    checks:
+      - tcp: 'localhost:8140'
+        interval: '30s'
+        timeout: '10s'
+    tags:
+      - 'puppetserver'
+      - 'puppet'
+      - 'vagrant'
