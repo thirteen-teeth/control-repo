@@ -12,10 +12,10 @@ podman::containers:
       env:
         - "PUPPETDB_HOST=%{facts.fqdn}"
         - 'PUPPETDB_PORT=8081'
-        - "PUPPETDB_SSL_VERIFY=/etc/puppetlabs/puppet/ssl/certs/ca.pem"
-        - "PUPPETDB_KEY=/etc/puppetlabs/puppet/ssl/private_keys/%{facts.fqdn}.pem"
-        - "PUPPETDB_CERT=/etc/puppetlabs/puppet/ssl/certs/%{facts.fqdn}.pem"
-      volume: '/etc/puppetlabs/puppet/ssl:/etc/puppetlabs/puppet/ssl'
+        - 'PUPPETDB_SSL_VERIFY=/etc/puppetlabs/puppetdb/ssl/ca.pem'
+        - 'PUPPETDB_KEY=/etc/puppetlabs/puppetdb/ssl/private.pem'
+        - 'PUPPETDB_CERT=/etc/puppetlabs/puppetdb/ssl/public.pem'
+      volume: '/etc/puppetlabs/puppetdb:/etc/puppetlabs/puppetdb'
       publish: '8888:80'
     service_flags:
       timeout: '60'
