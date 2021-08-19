@@ -18,7 +18,6 @@ podman::containers:
       volume: '/etc/puppetlabs/puppetdb:/etc/puppetlabs/puppetdb'
       publish: '8888:80'
       privileged:
-        - null
     service_flags:
       timeout: '60'
 
