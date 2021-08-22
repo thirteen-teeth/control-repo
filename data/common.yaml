@@ -1,4 +1,12 @@
 ---
+lookup_options:
+  elasticsearch::config:
+    merge:
+      strategy: hash
+  consul::services:
+    merge:
+      strategy: deep
+
 profile::base::packages:
   - 'vim'
   - 'unzip'
@@ -20,7 +28,13 @@ consul::config_hash:
     http: '8500'
   advertise_addr: '%{facts.networking.interfaces.eth1.ip}'
 
-lookup_options:
-  elasticsearch::config:
-    merge:
-      strategy: hash
+consul::services:
+  node_exporter:
+    address: "%{facts.fqdn}"
+    port: 9100
+    checks:
+      - tcp: 'localhost:9100'
+        interval: '30s'
+        timeout: '10s'
+    tags:
+      - 'node_exporter'
