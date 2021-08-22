@@ -15,7 +15,7 @@ prometheus::scrape_configs:
     scrape_interval: '10s'
     scrape_timeout: '10s'
     consul_sd_configs:
-    - server: 'consul-01.puppetdomain'
+    - server: 'consul-01.puppetdomain:8500'
       scheme: 'http'
       datacenter: 'vagrant'
       services:  ['node_exporter']
