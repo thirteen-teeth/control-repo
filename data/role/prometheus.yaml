@@ -28,5 +28,25 @@ grafana::provisioning_datasources:
     - name: 'Prometheus'
       type: 'prometheus'
       access: 'proxy'
-      url: 'http://localhost:9090/prometheus'
+      url: 'http://localhost:9090'
       isDefault: true
+
+consul::services:
+  prometheus:
+    address: "%{facts.fqdn}"
+    port: 9090
+    checks:
+      - tcp: 'localhost:9090'
+        interval: '30s'
+        timeout: '10s'
+    tags:
+      - 'prometheus'
+  grafana:
+    address: "%{facts.fqdn}"
+    port: 3000
+    checks:
+      - tcp: 'localhost:3000'
+        interval: '30s'
+        timeout: '10s'
+    tags:
+      - 'grafana'
