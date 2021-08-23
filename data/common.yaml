@@ -38,3 +38,6 @@ consul::services:
         timeout: '10s'
     tags:
       - 'node_exporter'
+
+prometheus::node_exporter::collectors_disable:
+  - 'powersupplyclass'
