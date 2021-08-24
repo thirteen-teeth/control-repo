@@ -10,7 +10,6 @@ class profile::java_ks (
   include profile::java
 
   Java_ks {
-    ensure   => latest,
     password => $password,
     path     => $path,
     require  => Class['profile::java']
