@@ -1,8 +1,8 @@
 #comment
 class profile::java_ks (
   String $path       = '/usr/lib/jvm/jre/bin',
-  String $truststore = '/opt/truststore.jks',
-  String $keystore   = '/opt/keystore.jks',
+  String $truststore = '/opt/opensearch-1.0.0/config/ssl/truststore.jks',
+  String $keystore   = '/opt/opensearch-1.0.0/config/ssl/keystore.jks',
   String $password   = 'strongpassword', #TODO: SECRET
   String $ssldir     = '/etc/puppetlabs/puppet/ssl',
 ) {
@@ -23,7 +23,6 @@ class profile::java_ks (
   }
 
   java_ks { 'puppetca:keystore':
-    ensure       => latest,
     certificate  => "${ssldir}/certs/ca.pem",
     target       => $keystore,
     trustcacerts => true,
