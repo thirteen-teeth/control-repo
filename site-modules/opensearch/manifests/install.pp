@@ -32,10 +32,14 @@ class opensearch::install {
     require      => User[$opensearch::username],
     notify       => Exec[$copy_certs],
   }
-
-  sysctl { 'vm.max_map_count':
-    ensure => present,
-    value  => '262144',
+  exec { $copy_certs:
+    command     => "cp -r /etc/puppetlabs/puppet/ssl ${opensearch::install_dir}",
+    refreshonly => true,
+    notify      => Exec[$fix_permissions],
+  }
+  exec { $fix_permissions:
+    command     => "chown -R ${opensearch::username}:${opensearch::username} ${opensearch::install_dir}",
+    refreshonly => true,
   }
 
   file_line { 'opensearch soft':
