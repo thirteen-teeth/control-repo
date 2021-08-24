@@ -1,5 +1,4 @@
 ---
-
 vault::version: '1.8.1'
 vault::install_method: 'archive'
 vault::enable_ui: true

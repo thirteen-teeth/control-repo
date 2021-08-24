@@ -26,8 +26,8 @@ opensearch::config_hash:
   gateway.recover_after_nodes: '3'
   action.destructive_requires_name: 'true'
   plugins.security.ssl.transport.pemkey_filepath: "ssl/private_keys/%{::fqdn}.pem"
-  plugins.security.ssl.transport.pemcert_filepath: "ssl/certs/%{::fqdn}.crt"
+  plugins.security.ssl.transport.pemcert_filepath: "ssl/certs/%{::fqdn}.pem"
   plugins.security.ssl.transport.pemtrustedcas_filepath: "ssl/certs/ca.pem"
   plugins.security.ssl.http.pemkey_filepath: "ssl/private_keys/%{::fqdn}.pem"
-  plugins.security.ssl.http.pemcert_filepath: "ssl/certs/%{::fqdn}.crt"
+  plugins.security.ssl.http.pemcert_filepath: "ssl/certs/%{::fqdn}.pem"
   plugins.security.ssl.http.pemtrustedcas_filepath: "ssl/certs/ca.pem"

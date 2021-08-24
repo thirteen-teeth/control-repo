@@ -13,6 +13,8 @@ profile::base::packages:
   - 'bash-completion'
   - 'setroubleshoot'
   - 'jq'
+  - 'nc'
+  - 'tree'
 
 consul::version: '1.10.1'
 consul::config_hash:
