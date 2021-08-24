@@ -1,8 +1,8 @@
 #comment
 class profile::java_ks (
   String $path       = '/usr/lib/jvm/jre/bin',
-  String $truststore = '/opt/opensearch-1.0.0/config/ssl/truststore.jks',
-  String $keystore   = '/opt/opensearch-1.0.0/config/ssl/keystore.jks',
+  String $truststore = '/opt/opensearch-1.0.0/config/truststore.jks',
+  String $keystore   = '/opt/opensearch-1.0.0/config/keystore.jks',
   String $password   = 'strongpassword', #TODO: SECRET
   String $ssldir     = '/etc/puppetlabs/puppet/ssl',
 ) {
