@@ -1,7 +1,7 @@
 #comment
 class consul_template::install {
 
-  $fix_permissions = 'install dir permissions fix'
+  $fix_permissions = 'consul_template dir permissions fix'
   Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
 
   user { $consul_template::username:
