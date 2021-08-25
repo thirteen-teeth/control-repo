@@ -26,9 +26,8 @@ class consul_template::install {
     mode   => '0750',
   }
 
-  archive { "${consul_template::download_target_dir}/${consul_template::artifact_name}":
-    ensure       => $consul_template::ensure,
-#    source       => $consul_template::artifact_full_url,
+  archive { 'consul-template_0.27.0_linux_amd64.zip':
+    ensure       => present,
     source       => 'https://releases.hashicorp.com/consul-template/0.27.0/consul-template_0.27.0_linux_amd64.zip',
     extract      => true,
     extract_path => $consul_template::install_dir,
