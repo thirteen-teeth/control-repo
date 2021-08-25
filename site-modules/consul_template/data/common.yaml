@@ -10,7 +10,7 @@ consul_template::install_dir: "%{lookup('consul_template::extract_dir')}/consul_
 consul_template::manage_user: true
 consul_template::manage_systemd: true
 consul_template::username: 'consul-template'
-consul_template::config_dir: "%{lookup('consul_template::install_dir')}/config"
+consul_template::config_dir: '/etc/consul_template'
 consul_template::log_dir: '/var/log/consul_template'
 consul_template::data_dir: '/var/lib/consul_template'
 consul_template::config_hash:
