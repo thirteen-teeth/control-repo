@@ -26,11 +26,12 @@ class consul_template::install {
     mode   => '0750',
   }
 
-  archive { "${consul_template::download_target_dir}/${consul_template::artifact_name}":
+  archive { $consul_template::artifact_name:
     ensure       => $consul_template::ensure,
+    path         => "${consul_template::download_target_dir}/${consul_template::artifact_name}",
+    source       => $consul_template::artifact_full_url,
     extract      => true,
     extract_path => $consul_template::install_dir,
-    source       => $consul_template::artifact_full_url,
     creates      => "${consul_template::install_dir}/${consul_template::bin}",
     require      => [ User[$consul_template::username],
                       File[$consul_template::install_dir]
