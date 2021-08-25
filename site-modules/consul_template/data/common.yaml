@@ -5,7 +5,7 @@ consul_template::artifact_base_url: 'https://releases.hashicorp.com/consul-templ
 consul_template::artifact_name: "consul-template_%{lookup('consul_template::version')}_linux_amd64.zip"
 consul_template::artifact_full_url: "%{lookup('consul_template::artifact_base_url')}/%{lookup('consul_template::version')}/%{lookup('consul_template::artifact_name')}"
 consul_template::download_target_dir: '/opt'
-consul_template::extract_dir: '/opt'
+consul_template::bin: 'consul-template'
 consul_template::install_dir: "%{lookup('consul_template::extract_dir')}/consul_template-%{lookup('consul_template::version')}"
 consul_template::manage_user: true
 consul_template::manage_systemd: true

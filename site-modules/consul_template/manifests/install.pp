@@ -6,7 +6,7 @@ class consul_template::install {
 
   user { $consul_template::username:
     ensure => $consul_template::ensure,
-    shell  => '/bin/bash',
+    shell  => '/bin/bash', #FIX ME
   }
 
   File {
@@ -21,14 +21,20 @@ class consul_template::install {
     ensure => 'directory',
     mode   => '0750',
   }
+  file { $consul_template::install_dir:
+    ensure => 'directory',
+    mode   => '0750',
+  }
 
   archive { "${consul_template::download_target_dir}/${consul_template::artifact_name}":
     ensure       => $consul_template::ensure,
     extract      => true,
-    extract_path => $consul_template::extract_dir,
+    extract_path => $consul_template::install_dir,
     source       => $consul_template::artifact_full_url,
-    creates      => $consul_template::install_dir,
-    require      => User[$consul_template::username],
+    creates      => "${consul_template::install_dir}/${consul_template::bin}",
+    require      => [ User[$consul_template::username],
+                      File[$consul_template::install_dir]
+                    ],
     notify       => Exec[$fix_permissions],
   }
   exec { $fix_permissions:
