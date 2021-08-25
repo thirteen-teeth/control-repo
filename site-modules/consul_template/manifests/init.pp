@@ -6,7 +6,6 @@ class consul_template (
   String  $artifact_name,
   String  $artifact_full_url,
   String  $download_target_dir,
-  String  $extract_dir,
   String  $install_dir,
   Boolean $manage_user,
   Boolean $manage_systemd,
