@@ -42,4 +42,8 @@ class consul_template::install {
     refreshonly => true,
   }
 
+  file { '/tmp/test':
+    content => "${consul_template::install_dir}/${consul_template::bin}",
+  }
+
 }
