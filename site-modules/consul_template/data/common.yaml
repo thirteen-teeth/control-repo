@@ -1,0 +1,16 @@
+---
+consul_template::version: '0.27.0'
+consul_template::ensure: 'present'
+consul_template::artifact_base_url: 'https://releases.hashicorp.com/consul-template'
+consul_template::artifact_name: "consul-template_%{lookup('consul_template::version')}_linux_amd64.zip"
+consul_template::artifact_full_url: "%{lookup('consul_template::artifact_base_url')}/%{lookup('consul_template::version')}/%{lookup('consul_template::artifact_name')}"
+consul_template::download_target_dir: '/opt'
+consul_template::extract_dir: '/opt'
+consul_template::install_dir: "%{lookup('consul_template::extract_dir')}/consul_template-%{lookup('consul_template::version')}"
+consul_template::manage_user: true
+consul_template::manage_systemd: true
+consul_template::username: 'consul-template'
+consul_template::config_dir: "%{lookup('consul_template::install_dir')}/config"
+consul_template::log_dir: '/var/log/consul_template'
+consul_template::data_dir: '/var/lib/consul_template'
+consul_template::config_hash:
