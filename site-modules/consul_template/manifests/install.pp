@@ -31,7 +31,7 @@ class consul_template::install {
     source       => 'https://releases.hashicorp.com/consul-template/0.27.0/consul-template_0.27.0_linux_amd64.zip',
     extract      => true,
     extract_path => $consul_template::install_dir,
-    creates      => "${consul_template::install_dir}/${consul_template::bin}",
+#    creates      => "${consul_template::install_dir}/${consul_template::bin}",
     require      => [ User[$consul_template::username],
                       File[$consul_template::install_dir]
                     ],
