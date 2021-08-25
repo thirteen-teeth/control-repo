@@ -14,7 +14,7 @@ class consul_template (
   String  $config_dir,
   String  $log_dir,
   String  $data_dir,
-  Hash    $config_hash,
+  Hash    $config_hash = {},
 ) {
   contain consul_template::install
 }
