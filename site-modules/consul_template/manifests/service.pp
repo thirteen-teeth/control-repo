@@ -8,7 +8,7 @@ class consul_template::service {
   $clean_systemd     = 'consul-template-clean-systemd'
   $service_name      = 'consul-template'
 
-  if $ensure == 'present' {
+  if $consul_template::ensure == 'present' {
 
     file { $service_unit_name:
       content => template("consul_template/${unit_file}.erb"),
@@ -31,19 +31,11 @@ class consul_template::service {
       enable  => true,
       require => File[$service_unit_name],
     }
-  } elsif $ensure == 'absent'{
+  } elsif $consul_template::ensure == 'absent'{
 
-    service { $$service_name:
+    service { $service_name:
       ensure => stopped,
       enable => false,
-    }
-
-    file { $full_path:
-      ensure => absent,
-    }
-
-    file { $install_dir:
-      ensure => absent,
     }
 
     file { $service_unit_name:
