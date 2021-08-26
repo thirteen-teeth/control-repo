@@ -23,7 +23,7 @@ class consul_template::service {
       command     => 'systemctl daemon-reload',
       path        => [ '/usr/bin', '/bin', '/usr/sbin' ],
       refreshonly => true,
-      notify      => Service[$$service_name],
+      notify      => Service[$service_name],
     }
 
     service { $service_name:
