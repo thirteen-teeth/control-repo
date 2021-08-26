@@ -7,7 +7,7 @@ After=network-online.target consul.service vault.service
 [Service]
 EnvironmentFile=-/etc/sysconfig/consul-template
 Restart=on-failure
-ExecStart=<%= scope['consul_template::install_dir'] %>/<%= scope['consul_template::bin'] %> -config=<%= scope['consul_template::config_dir'] %>/config.hcl
+ExecStart=<%= scope['consul_template::install_dir'] %>/<%= scope['consul_template::bin'] %> $OPTIONS -config=<%= scope['consul_template::config_dir'] %>/config.hcl
 
 [Install]
 WantedBy=multi-user.target
