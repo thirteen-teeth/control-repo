@@ -21,5 +21,6 @@ consul_template::vault:
   address: 'http://vault-01.puppetdomain:8200'
   vault_agent_token_file: '/opt/vault_data/initial_token'
 consul_template::templates:
-  - source: '/tmp/cert.tpl'
+  test:
+    source: '/tmp/cert.tpl'
     destination: '/tmp/outfile'

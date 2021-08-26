@@ -17,7 +17,7 @@ class consul_template (
   Hash    $general,
   Hash    $consul,
   Hash    $vault,
-  Array   $templates,
+  Hash    $templates,
 ) {
   contain consul_template::install
   contain consul_template::config
