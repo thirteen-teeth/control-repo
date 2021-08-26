@@ -14,7 +14,13 @@ class consul_template (
   String  $config_dir,
   String  $log_dir,
   String  $data_dir,
-  Hash    $config_hash = {},
+  Hash    $general,
+  Hash    $consul,
+  Hash    $vault,
+  Array   $templates,
 ) {
   contain consul_template::install
+  contain consul_template::config
+
+  Class['consul_template::install'] ~> Class['consul_template::config']
 }

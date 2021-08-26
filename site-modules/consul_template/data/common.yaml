@@ -10,7 +10,16 @@ consul_template::install_dir: "%{lookup('consul_template::download_target_dir')}
 consul_template::manage_user: true
 consul_template::manage_systemd: true
 consul_template::username: 'consul-template'
-consul_template::config_dir: '/etc/consul_template'
-consul_template::log_dir: '/var/log/consul_template'
-consul_template::data_dir: '/var/lib/consul_template'
-consul_template::config_hash:
+consul_template::config_dir: '/etc/consul-template'
+consul_template::log_dir: '/var/log/consul-template'
+consul_template::data_dir: '/var/lib/consul-template'
+consul_template::general:
+  log_level: 'warn'
+consul_template::consul:
+  address: '127.0.0.1:8500'
+consul_template::vault:
+  address: 'http://vault-01.puppetdomain:8200'
+  vault_agent_token_file: '/opt/vault_data/initial_token'
+consul_template::templates:
+  - source: '/tmp/cert.tpl'
+    destination: '/tmp/outfile'
