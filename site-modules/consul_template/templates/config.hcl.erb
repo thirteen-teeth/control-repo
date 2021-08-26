@@ -6,10 +6,10 @@
 consul {
 <% scope['consul_template::consul'].each do |key,value| -%>
   <%= key %> = "<%= value %>"
-<% end %>
+<% end -%>
 }
 vault {
 <% scope['consul_template::vault'].each do |key,value| -%>
   <%= key %> = "<%= value %>"
-<% end %>
+<% end -%>
 }
