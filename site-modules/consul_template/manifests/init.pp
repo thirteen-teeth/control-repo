@@ -21,6 +21,7 @@ class consul_template (
 ) {
   contain consul_template::install
   contain consul_template::config
+  contain consul_template::service
 
-  Class['consul_template::install'] ~> Class['consul_template::config']
+  Class['consul_template::install'] ~> Class['consul_template::config'] ~> Class['consul_template::service']
 }
