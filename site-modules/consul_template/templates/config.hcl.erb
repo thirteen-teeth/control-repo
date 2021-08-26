@@ -1,3 +1,5 @@
 #This file is managed by Puppet.
 
-<%= scope.lookupvar('consul_template::general') %>
+<% scope['consul_template::general'].each do |key,value| -%>
+<%= key %> = "<%= value %>"
+<% end %>
