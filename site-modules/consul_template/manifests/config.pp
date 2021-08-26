@@ -20,5 +20,4 @@ class consul_template::config {
     require => File[$config_dir],
   }
 
-
 }
