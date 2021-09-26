@@ -4,7 +4,7 @@ class role::opensearch {
   include opensearch
 
   file { '/tmp/cert.tpl':
-    content => template('profile/cert.tpl.erb')
+    content => template('profile/consul_template/cert.tpl.erb')
   }
 
 }
