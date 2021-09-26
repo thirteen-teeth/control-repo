@@ -13,10 +13,12 @@ vault {
   <%= key %> = "<%= value %>"
 <% end -%>
 }
+<% if scope['consul_template::templates'] %>%
 <% scope['consul_template::templates'].each do |key,value| -%>
 template {
 <% value.each do |inner_key,inner_value| -%>
   <%= inner_key %> = "<%= inner_value %>"
 <% end -%>
 }
+<% end -%>
 <% end -%>
