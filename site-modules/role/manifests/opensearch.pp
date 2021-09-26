@@ -2,5 +2,9 @@
 class role::opensearch {
   include profile::base
   include opensearch
-  include profile::java_ks
+
+  file { '/tmp/cert.tpl':
+    content => template('profile/cert.tpl.erb')
+  }
+
 }

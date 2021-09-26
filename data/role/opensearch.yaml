@@ -3,6 +3,6 @@ consul_template::templates:
   test:
     source: '/tmp/cert.tpl'
     destination: '/tmp/cert.pem'
-  test2:
-    source: '/tmp/private.tpl'
-    destination: '/tmp/private.pem'
+  #test2:
+  #  source: '/tmp/private.tpl'
+  #  destination: '/tmp/private.pem'
