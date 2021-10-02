@@ -6,8 +6,9 @@ class opensearch::install {
   Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
 
   user { $opensearch::username:
-    ensure => $opensearch::ensure,
-    shell  => '/bin/bash',
+    ensure     => $opensearch::ensure,
+    shell      => '/bin/bash', #FIX ME
+    managehome => true,
   }
 
   File {
