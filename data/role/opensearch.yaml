@@ -2,10 +2,10 @@
 consul_template::templates:
   cert:
     source: '/tmp/cert.tpl'
-    destination: '/opt/opensearch-1.0.0/ssl/cert.pem'
+    destination: '/opt/opensearch-1.0.0/config/cert.pem'
   private:
     source: '/tmp/private.tpl'
-    destination: '/opt/opensearch-1.0.0/ssl/private.pem'
+    destination: '/opt/opensearch-1.0.0/config/private.pem'
   ca:
     source: '/tmp/ca.tpl'
-    destination: '/opt/opensearch-1.0.0/ssl/ca.pem'
+    destination: '/opt/opensearch-1.0.0/config/ca.pem'
