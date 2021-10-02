@@ -30,12 +30,7 @@ class opensearch::install {
     source       => $opensearch::artifact_full_url,
     creates      => $opensearch::install_dir,
     require      => User[$opensearch::username],
-    notify       => Exec[$copy_certs],
-  }
-  exec { $copy_certs:
-    command     => "cp -r /etc/puppetlabs/puppet/ssl ${opensearch::install_dir}",
-    refreshonly => true,
-    notify      => Exec[$fix_permissions],
+    notify       => Exec[$fix_permissions],
   }
   exec { $fix_permissions:
     command     => "chown -R ${opensearch::username}:${opensearch::username} ${opensearch::install_dir}",
