@@ -48,6 +48,8 @@ class opensearch::install {
     line => 'opensearch hard memlock unlimited',
   }
 
+  sysctl { 'vm.max_map_count': value => '262144' }
+
 }
 
 #openssl x509 -subject -nameopt RFC2253 -noout -in
