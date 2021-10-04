@@ -31,3 +31,6 @@ opensearch::config_hash:
   plugins.security.ssl.http.pemkey_filepath: "private.pem"
   plugins.security.ssl.http.pemcert_filepath: "cert.pem"
   plugins.security.ssl.http.pemtrustedcas_filepath: "ca.pem"
+  plugins.security.nodes_dn: ['*']
+  plugins.security.system_indices.enabled: true
+  plugins.security.system_indices.indices: [".opendistro-alerting-config", ".opendistro-alerting-alert*", ".opendistro-anomaly-results*", ".opendistro-anomaly-detector*", ".opendistro-anomaly-checkpoints", ".opendistro-anomaly-detection-state", ".opendistro-reports-*", ".opendistro-notifications-*", ".opendistro-notebooks", ".opendistro-asynchronous-search-response*"]
