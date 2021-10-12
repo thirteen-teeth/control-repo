@@ -18,6 +18,7 @@ opensearch::config_hash:
   node.name: "%{::fqdn}"
   path.data: '/var/lib/opensearch'
   path.logs: '/var/log/opensearch'
+  action.destructive_requires_name: 'true'
   bootstrap.memory_lock: 'true'
   network.host: '0.0.0.0'
   http.port: '9200'
@@ -25,6 +26,9 @@ opensearch::config_hash:
   cluster.initial_master_nodes: ['os-master-01.puppetdomain', 'os-master-02.puppetdomain', 'os-master-03.puppetdomain']
   gateway.recover_after_nodes: '3'
   action.destructive_requires_name: 'true'
+  plugins.security.ssl.http.enabled: 'true'
+  plugins.security.allow_default_init_securityindex: 'true'
+  plugins.security.ssl.transport.enforce_hostname_verification: 'false'
   plugins.security.ssl.transport.pemkey_filepath: "private.pem"
   plugins.security.ssl.transport.pemcert_filepath: "cert.pem"
   plugins.security.ssl.transport.pemtrustedcas_filepath: "ca.pem"
@@ -34,3 +38,7 @@ opensearch::config_hash:
   plugins.security.nodes_dn: ['*']
   plugins.security.system_indices.enabled: true
   plugins.security.system_indices.indices: [".opendistro-alerting-config", ".opendistro-alerting-alert*", ".opendistro-anomaly-results*", ".opendistro-anomaly-detector*", ".opendistro-anomaly-checkpoints", ".opendistro-anomaly-detection-state", ".opendistro-reports-*", ".opendistro-notifications-*", ".opendistro-notebooks", ".opendistro-asynchronous-search-response*"]
+  plugins.security.restapi.roles_enabled: ["all_access", "security_rest_api_access"]
+  plugins.security.audit.type: 'internal_opensearch'
+  plugins.security.enable_snapshot_restore_privilege: 'true'
+  plugins.security.check_snapshot_restore_write_privileges: 'true'
