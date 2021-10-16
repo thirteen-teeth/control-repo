@@ -9,3 +9,6 @@ consul_template::templates:
   ca:
     source: '/tmp/ca.tpl'
     destination: '/opt/opensearch-1.0.0/config/ca.pem'
+  dr_spock:
+    source: '/tmp/dr_spock.tpl'
+    destination: '/opt/opensearch-1.0.0/config/dr_spock.pem'
