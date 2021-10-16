@@ -12,3 +12,6 @@ consul_template::templates:
   dr_spock:
     source: '/tmp/dr_spock.tpl'
     destination: '/opt/opensearch-1.0.0/config/dr_spock.pem'
+  dr_spock_key:
+    source: '/tmp/dr_spock_key.tpl'
+    destination: '/opt/opensearch-1.0.0/config/dr_spock.pem'
