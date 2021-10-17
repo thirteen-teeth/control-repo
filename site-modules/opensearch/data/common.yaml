@@ -44,4 +44,4 @@ opensearch::config_hash:
   plugins.security.check_snapshot_restore_write_privileges: true
   plugins.security.allow_unsafe_democertificates: true
   plugins.security.nodes_dn: ['/CN=.*/']
-  plugins.security.authcz.admin_dn: ['CN=spock.puppetdomain']
+  plugins.security.authcz.admin_dn: ['CN=spock.admin.puppetdomain']
