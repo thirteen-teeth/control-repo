@@ -5,6 +5,8 @@ Requires=network-online.target
 After=network-online.target
 
 [Service]
+user=opensearch
+group=opensearch
 EnvironmentFile=-/etc/sysconfig/opensearch
 Restart=on-failure
 ExecStart=<%= scope['opensearch::install_dir'] %>/bin/opensearch
