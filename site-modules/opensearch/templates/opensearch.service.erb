@@ -7,6 +7,7 @@ After=network-online.target
 [Service]
 User=opensearch
 Group=opensearch
+LimitMEMLOCK=infinity
 EnvironmentFile=-/etc/sysconfig/opensearch
 Restart=on-failure
 ExecStart=<%= scope['opensearch::install_dir'] %>/bin/opensearch
