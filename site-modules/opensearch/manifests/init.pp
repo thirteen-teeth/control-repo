@@ -18,6 +18,7 @@ class opensearch (
 ) {
   contain opensearch::install
   contain opensearch::config
+  contain opensearch::service
 
-  Class['opensearch::install'] ~> Class['opensearch::config']
+  Class['opensearch::install'] ~> Class['opensearch::config'] ~> Class['opensearch::service']
 }

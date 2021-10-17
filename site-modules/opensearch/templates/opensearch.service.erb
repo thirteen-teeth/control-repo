@@ -1,0 +1,13 @@
+# This file is managed by Puppet.
+[Unit]
+Description=Opensearch Service
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/opensearch
+Restart=on-failure
+ExecStart=<%= scope['opensearch::install_dir'] %>/bin/opensearch
+
+[Install]
+WantedBy=multi-user.target
