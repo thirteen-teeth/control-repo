@@ -21,7 +21,7 @@ opensearch::config_hash:
   action.destructive_requires_name: 'true'
   bootstrap.memory_lock: 'true'
   network.host: '0.0.0.0'
-  http.port: '9200'
+  # https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-hosts-providers.html#file-based-hosts-provider
   discovery.seed_hosts: ['os-master-01.puppetdomain', 'os-master-02.puppetdomain', 'os-master-03.puppetdomain']
   cluster.initial_master_nodes: ['os-master-01.puppetdomain', 'os-master-02.puppetdomain', 'os-master-03.puppetdomain']
   gateway.recover_after_nodes: '3'
