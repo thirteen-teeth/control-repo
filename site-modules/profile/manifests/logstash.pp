@@ -9,7 +9,6 @@ class profile::logstash (
     baseurl  => 'https://artifacts.elastic.co/packages/oss-7.x/yum',
     gpgkey   => 'https://artifacts.elastic.co/GPG-KEY-elasticsearch',
     gpgcheck => 1,
-    type     => 'rpm-md',
   }
 
   package { 'logstash-oss':
