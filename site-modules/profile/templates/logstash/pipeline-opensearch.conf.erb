@@ -19,11 +19,13 @@ filter {
   }
 }
 
-opensearch {
-  hosts => ["https://os-master-01.puppetdomain:9200"]
-  index => "opensearch-logstash-%{+YYYY.MM.dd}"
-  user => "admin"
-  password => "admin"
-  ssl => true
-  ssl_certificate_verification => false
+output {
+  opensearch {
+    hosts => ["https://os-master-01.puppetdomain:9200"]
+    index => "opensearch-logstash-%{+YYYY.MM.dd}"
+    user => "admin"
+    password => "admin"
+    ssl => true
+    ssl_certificate_verification => false
+  }
 }
