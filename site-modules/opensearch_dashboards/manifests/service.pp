@@ -20,7 +20,7 @@ class opensearch_dashboards::service {
     }
 
     exec { $service_exec_name:
-      command     => 'opensearch-dashboards systemctl daemon-reload',
+      command     => 'systemctl daemon-reload',
       path        => [ '/usr/bin', '/bin', '/usr/sbin' ],
       refreshonly => true,
       notify      => Service[$service_name],
@@ -44,7 +44,7 @@ class opensearch_dashboards::service {
     }
 
     exec { $clean_systemd:
-      command     => 'opensearch-dashboards systemctl daemon-reload && systemctl reset-failed',
+      command     => 'systemctl daemon-reload && systemctl reset-failed',
       path        => [ '/usr/bin', '/bin', '/usr/sbin' ],
       refreshonly => true,
     }
