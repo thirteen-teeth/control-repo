@@ -9,7 +9,7 @@ class opensearch_dashboards::config {
       file { "${opensearch_dashboards::config_dir}/${filename}":
         ensure  => present,
         mode    => '0640',
-        content => template("opensearch/${filename}.erb"),
+        content => template("opensearch_dashboards/${filename}.erb"),
       }
     }
   }
