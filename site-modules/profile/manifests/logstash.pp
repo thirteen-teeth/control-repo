@@ -20,7 +20,7 @@ class profile::logstash (
   $plugin_exec = 'logstash_exec'
   exec { $plugin_exec:
     command => '/usr/share/logstash/bin/logstash-plugin install logstash-output-opensearch',
-    unless  => '/usr/share/logstash/bin/logstash-plugin list | grep logstash-output-opensearch'
+    unless  => '/usr/share/logstash/bin/logstash-plugin list | grep logstash-output-opensearch',
   }
 
 }
