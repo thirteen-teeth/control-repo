@@ -19,8 +19,10 @@ class profile::logstash (
 
   $plugin_exec = 'logstash_exec'
   exec { $plugin_exec:
-    command => '/usr/share/logstash/bin/logstash-plugin install logstash-output-opensearch',
-    unless  => '/usr/share/logstash/bin/logstash-plugin list | grep logstash-output-opensearch',
+    command     => '/usr/share/logstash/bin/logstash-plugin install logstash-output-opensearch',
+    refreshonly => true,
+    # unless works really slow because it checks every time, find a better way, 3s -> 12s puppet run
+    # unless  => '/usr/share/logstash/bin/logstash-plugin list | grep logstash-output-opensearch',
   }
 
 }
