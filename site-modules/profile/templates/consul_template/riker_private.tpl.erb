@@ -1,0 +1,3 @@
+{{- /* /tmp/riker_private.tpl */ -}}
+{{ with secret "pki_int/issue/puppetdomain" "common_name=riker" "private_key_format=pkcs8"}}
+{{ .Data.private_key }}{{ end }}

@@ -1,3 +1,0 @@
-{{- /* /tmp/dr_spock.tpl */ -}}
-{{ with secret "pki_int/issue/puppetdomain" "common_name=spock.admin.puppetdomain" "private_key_format=pkcs8"}}
-{{ .Data.certificate }}{{ end }}
