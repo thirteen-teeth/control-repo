@@ -1,6 +1,8 @@
 #comment
 class profile::logstash (
   $repo_name = 'elastic-oss-7',
+  $package_name = 'logstash-oss',
+  $version = '7.10.2',
 ) {
 
   yumrepo { $repo_name:
@@ -13,8 +15,8 @@ class profile::logstash (
 
   $plugin_exec = 'logstash_exec'
 
-  package { 'logstash-oss':
-    ensure  => '7.10.2',
+  package { $package_name:
+    ensure  => $version,
     require => Yumrepo[$repo_name],
     notify  => Exec[$plugin_exec],
   }
@@ -23,6 +25,24 @@ class profile::logstash (
     command => '/usr/share/logstash/bin/logstash-plugin install logstash-output-opensearch',
     # unless works really slow because it checks every time, find a better way, 3s -> 12s puppet run
     unless  => '/usr/share/logstash/bin/logstash-plugin list | grep logstash-output-opensearch',
+  }
+
+  file { 'pipeline-opensearch.conf':
+    path    => '/etc/logstash/conf.d/pipeline-opensearch.conf',
+    mode    => '0644',
+    owner   => 'logstash',
+    group   => 'logstash',
+    content => template('profile/logstash/pipeline-opensearch.conf.erb'),
+    require => Package[$package_name],
+  }
+
+  file { 'nginx.log':
+    path    => '/tmp/nginx.log',
+    mode    => '0644',
+    owner   => 'logstash',
+    group   => 'logstash',
+    source  => 'puppet:///modules/profile/nginx.log',
+    require => Package[$package_name],
   }
 
 }

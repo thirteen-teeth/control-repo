@@ -1,0 +1,29 @@
+input {
+  file {
+    path => "/tmp/nginx.log"
+    start_position => "beginning"
+    sincedb_path => "/dev/null"
+  }
+}
+
+filter {
+  json {
+    source => "message"
+  }
+  geoip {
+    source => "remote_ip"
+  }
+  useragent {
+    source => "agent"
+    target => "useragent"
+  }
+}
+
+opensearch {
+  hosts => ["https://os-master-01.puppetdomain:9200"]
+  index => "opensearch-logstash-%{+YYYY.MM.dd}"
+  user => "admin"
+  password => "admin"
+  ssl => true
+  ssl_certificate_verification => false
+}
