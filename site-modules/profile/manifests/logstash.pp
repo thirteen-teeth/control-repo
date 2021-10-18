@@ -11,13 +11,14 @@ class profile::logstash (
     gpgcheck => 1,
   }
 
+  $plugin_exec = 'logstash_exec'
+
   package { 'logstash-oss':
     ensure  => '7.10.2',
     require => Yumrepo[$repo_name],
     notify  => Exec[$plugin_exec],
   }
 
-  $plugin_exec = 'logstash_exec'
   exec { $plugin_exec:
     command     => '/usr/share/logstash/bin/logstash-plugin install logstash-output-opensearch',
     refreshonly => true,
