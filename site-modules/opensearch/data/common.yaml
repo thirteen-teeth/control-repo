@@ -27,8 +27,7 @@ opensearch::config_hash:
   gateway.recover_after_nodes: '3'
   action.destructive_requires_name: true
   plugins.security.ssl.http.enabled: true
-  plugins.security.allow_default_init_securityindex: true
-  plugins.security.ssl.transport.enforce_hostname_verification: 'false'
+  plugins.security.ssl.transport.enforce_hostname_verification: true
   plugins.security.ssl.transport.pemkey_filepath: 'private.pem'
   plugins.security.ssl.transport.pemcert_filepath: 'cert.pem'
   plugins.security.ssl.transport.pemtrustedcas_filepath: 'ca.pem'
