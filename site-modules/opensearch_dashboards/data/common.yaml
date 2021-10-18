@@ -3,7 +3,7 @@ opensearch_dashboards::version: '1.0.0'
 opensearch_dashboards::ensure: 'present'
 opensearch_dashboards::artifact_base_url: 'https://artifacts.opensearch.org/releases/bundle/opensearch-dashboards'
 opensearch_dashboards::artifact_name: "opensearch-%{lookup('opensearch_dashboards::version')}-linux-x64.tar.gz"
-opensearch_dashboards::artifact_full_url: "%{lookup('opensearch_dashboards::artifact_base_url')}/%{lookup('opensearch_dashboards::version')}/opensearch-%{lookup('opensearch_dashboards::version')}-linux-x64.tar.gz"
+opensearch_dashboards::artifact_full_url: "%{lookup('opensearch_dashboards::artifact_base_url')}/%{lookup('opensearch_dashboards::version')}/opensearch-dashboards-%{lookup('opensearch_dashboards::version')}-linux-x64.tar.gz"
 opensearch_dashboards::download_target_dir: '/opt'
 opensearch_dashboards::extract_dir: '/opt'
 opensearch_dashboards::install_dir: "%{lookup('opensearch_dashboards::extract_dir')}/opensearch-dashboards-%{lookup('opensearch_dashboards::version')}"
