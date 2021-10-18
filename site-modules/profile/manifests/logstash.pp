@@ -4,13 +4,12 @@ class profile::logstash (
 ) {
 
   yumrepo { $repo_name:
-    enabled     => 1,
-    descr       => $repo_name,
-    baseurl     => 'https://artifacts.elastic.co/packages/oss-7.x/yum',
-    gpgkey      => 'https://artifacts.elastic.co/GPG-KEY-elasticsearch',
-    gpgcheck    => 1,
-    autorefresh => 1,
-    type        => 'rpm-md',
+    enabled  => 1,
+    descr    => $repo_name,
+    baseurl  => 'https://artifacts.elastic.co/packages/oss-7.x/yum',
+    gpgkey   => 'https://artifacts.elastic.co/GPG-KEY-elasticsearch',
+    gpgcheck => 1,
+    type     => 'rpm-md',
   }
 
   package { 'logstash-oss':
