@@ -21,4 +21,9 @@ class consul_template::config {
     require => File[$config_dir],
   }
 
+  file_line { 'consul-template_environment':
+    path => '/etc/sysconfig/consul-template',
+    line => 'OPTIONS=-log-level info'
+  }
+
 }
