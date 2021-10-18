@@ -1,0 +1,29 @@
+---
+opensearch_dashboards::version: '1.0.0'
+opensearch_dashboards::ensure: 'present'
+opensearch_dashboards::artifact_base_url: 'https://artifacts.opensearch.org/releases/bundle/opensearch-dashboards'
+opensearch_dashboards::artifact_name: "opensearch-%{lookup('opensearch_dashboards::version')}-linux-x64.tar.gz"
+opensearch_dashboards::artifact_full_url: "%{lookup('opensearch_dashboards::artifact_base_url')}/%{lookup('opensearch_dashboards::version')}/opensearch-%{lookup('opensearch_dashboards::version')}-linux-x64.tar.gz"
+opensearch_dashboards::download_target_dir: '/opt'
+opensearch_dashboards::extract_dir: '/opt'
+opensearch_dashboards::install_dir: "%{lookup('opensearch_dashboards::extract_dir')}/opensearch-dashboards-%{lookup('opensearch_dashboards::version')}"
+opensearch_dashboards::manage_user: true
+opensearch_dashboards::manage_systemd: true
+opensearch_dashboards::username: 'opensearch-dashboards'
+opensearch_dashboards::config_dir: "%{lookup('opensearch_dashboards::install_dir')}/config"
+opensearch_dashboards::log_dir: '/var/log/opensearch-dashboards'
+opensearch_dashboards::data_dir: '/var/lib/opensearch-dashboards'
+opensearch_dashboards::config_hash:
+  opensearch.hosts: ["https://os-master-01.puppetdomain:9200", "https://os-master-02.puppetdomain:9200", "https://os-master-03.puppetdomain:9200"]
+  opensearch.ssl.verificationMode: full
+  opensearch.username: "kibanaserver"
+  opensearch.password: "kibanaserver"
+  opensearch.requestHeadersWhitelist: [ authorization,securitytenant ]
+  server.ssl.enabled: true
+  server.ssl.certificate: /usr/share/opensearch-dashboards/config/cert.pem
+  server.ssl.key: /usr/share/opensearch-dashboards/config/private.pem
+  opensearch.ssl.certificateAuthorities: [ "/usr/share/opensearch-dashboards/config/ca.pem" ]
+  opensearch_security.multitenancy.enabled: true
+  opensearch_security.multitenancy.tenants.preferred: ["Private", "Global"]
+  opensearch_security.readonly_mode.roles: ["kibana_read_only"]
+  opensearch_security.cookie.secure: true

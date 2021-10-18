@@ -1,0 +1,16 @@
+# This file is managed by Puppet.
+[Unit]
+Description=opensearch-dashboards service
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=opensearch-dashboards
+Group=opensearch-dashboards
+LimitMEMLOCK=infinity
+EnvironmentFile=-/etc/sysconfig/opensearch-dashboards
+Restart=on-failure
+ExecStart=<%= scope['opensearch_dashboards::install_dir'] %>/bin/opensearch-dashboards
+
+[Install]
+WantedBy=multi-user.target
