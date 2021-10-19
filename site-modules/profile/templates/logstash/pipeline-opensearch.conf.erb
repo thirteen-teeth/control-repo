@@ -22,9 +22,9 @@ filter {
 output {
   opensearch {
     hosts => ["https://os-master-01.puppetdomain:9200"]
-    index => "opensearch-logstash-%{+YYYY.MM.dd}"
-    user => "admin"
-    password => "admin"
+    index => "logstash-%{+YYYY.MM.dd}"
+    user => "logstash"
+    password => "logstash"
     ssl => true
     ssl_certificate_verification => false
   }
