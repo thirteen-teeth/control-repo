@@ -9,9 +9,9 @@ consul_template::templates:
   ca:
     source: '/tmp/ca.tpl'
     destination: '/opt/opensearch-1.0.0/config/ca.pem'
-  spock:
+  riker:
     source: '/tmp/riker.tpl'
     destination: '/opt/opensearch-1.0.0/config/riker.pem'
-  spock_key:
+  riker_private:
     source: '/tmp/riker_private.tpl'
     destination: '/opt/opensearch-1.0.0/config/riker_private.pem'
