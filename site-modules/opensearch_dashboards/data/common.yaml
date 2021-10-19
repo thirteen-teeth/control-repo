@@ -14,6 +14,7 @@ opensearch_dashboards::config_dir: "%{lookup('opensearch_dashboards::install_dir
 opensearch_dashboards::log_dir: '/var/log/opensearch-dashboards'
 opensearch_dashboards::data_dir: '/var/lib/opensearch-dashboards'
 opensearch_dashboards::config_hash:
+  server.host: 0.0.0.0
   opensearch.hosts: ["https://os-master-01.puppetdomain:9200"]
   opensearchDashboards.index: ".opensearch_dashboards"
   # FIX ME
@@ -26,6 +27,8 @@ opensearch_dashboards::config_hash:
   server.ssl.key: '/opt/opensearch-dashboards-1.0.0/config/private.pem'
   # as per https://opensearch.org/docs/latest/dashboards/install/tls/
   # opensearch dashboards requires the intermediate and root ca or verificationMode: none
+  # its not obvious how to create a consul-template for the root ca cert without
+  # issuing every kibana host a key in that root ca chain which is not ideal
   opensearch.ssl.certificateAuthorities: [ "/opt/opensearch-dashboards-1.0.0/config/ca.pem" ]
   opensearch_security.multitenancy.enabled: true
   opensearch_security.multitenancy.tenants.preferred: ["Private", "Global"]
