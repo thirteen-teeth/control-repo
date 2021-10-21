@@ -21,8 +21,8 @@ opensearch_dashboards::config_hash:
   opensearch.password: "kibanaserver"
   opensearch.requestHeadersWhitelist: [ authorization,securitytenant ]
   server.ssl.enabled: true
-  server.ssl.certificate: '/opt/opensearch-dashboards-%{lookup('opensearch_dashboards::version')}/config/cert.pem'
-  server.ssl.key: '/opt/opensearch-dashboards-%{lookup('opensearch_dashboards::version')}/config/private.pem'
+  server.ssl.certificate: "/opt/opensearch-dashboards-%{lookup('opensearch_dashboards::version')}/config/cert.pem"
+  server.ssl.key: "/opt/opensearch-dashboards-%{lookup('opensearch_dashboards::version')}/config/private.pem"
   # as per https://opensearch.org/docs/latest/dashboards/install/tls/
   # opensearch dashboards requires the intermediate and root ca or verificationMode: none
   # its not obvious how to create a consul-template for the root ca cert without
