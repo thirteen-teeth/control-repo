@@ -8,10 +8,10 @@ opensearch_dashboards::config_hash:
 consul_template::templates:
   cert:
     source: '/tmp/cert.tpl'
-    destination: "/opt/opensearch-%{lookup('opensearch_dashboards::version')}/config/cert.pem"
+    destination: "/opt/opensearch-dashboards-%{lookup('opensearch_dashboards::version')}/config/cert.pem"
   private:
     source: '/tmp/private.tpl'
-    destination: "/opt/opensearch-%{lookup('opensearch_dashboards::version')}/config/private.pem"
+    destination: "/opt/opensearch-dashboards-%{lookup('opensearch_dashboards::version')}/config/private.pem"
   ca:
     source: '/tmp/ca.tpl'
-    destination: "/opt/opensearch-%{lookup('opensearch_dashboards::version')}/config/ca.pem"
+    destination: "/opt/opensearch-dashboards-%{lookup('opensearch_dashboards::version')}/config/ca.pem"
