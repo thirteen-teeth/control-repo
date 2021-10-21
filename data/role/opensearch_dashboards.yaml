@@ -1,11 +1,17 @@
 ---
+
+opensearch_dashboards::version: '1.1.0'
+opensearch_dashboards::config_hash:
+  opensearch.hosts: ["https://os-master-01.puppetdomain:9200"]
+
+
 consul_template::templates:
   cert:
     source: '/tmp/cert.tpl'
-    destination: '/opt/opensearch-dashboards-1.0.0/config/cert.pem'
+    destination: "/opt/opensearch-%{lookup('opensearch_dashboards::version')}/config/cert.pem"
   private:
     source: '/tmp/private.tpl'
-    destination: '/opt/opensearch-dashboards-1.0.0/config/private.pem'
+    destination: "/opt/opensearch-%{lookup('opensearch_dashboards::version')}/config/private.pem"
   ca:
     source: '/tmp/ca.tpl'
-    destination: '/opt/opensearch-dashboards-1.0.0/config/ca.pem'
+    destination: "/opt/opensearch-%{lookup('opensearch_dashboards::version')}/config/ca.pem"

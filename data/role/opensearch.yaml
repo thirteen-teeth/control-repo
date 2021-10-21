@@ -1,17 +1,24 @@
 ---
+
+opensearch::version: '1.1.0'
+opensearch::config_hash:
+  discovery.seed_hosts: ['os-master-01.puppetdomain', 'os-master-02.puppetdomain', 'os-master-03.puppetdomain']
+  cluster.initial_master_nodes: ['os-master-01.puppetdomain', 'os-master-02.puppetdomain', 'os-master-03.puppetdomain']
+  cluster.name: 'vagrant'
+
 consul_template::templates:
   cert:
     source: '/tmp/cert.tpl'
-    destination: '/opt/opensearch-1.0.0/config/cert.pem'
+    destination: "/opt/opensearch-%{lookup('opensearch::version')}/config/cert.pem"
   private:
     source: '/tmp/private.tpl'
-    destination: '/opt/opensearch-1.0.0/config/private.pem'
+    destination: "/opt/opensearch-%{lookup('opensearch::version')}/config/private.pem"
   ca:
     source: '/tmp/ca.tpl'
-    destination: '/opt/opensearch-1.0.0/config/ca.pem'
+    destination: "/opt/opensearch-%{lookup('opensearch::version')}/config/ca.pem"
   riker:
     source: '/tmp/riker.tpl'
-    destination: '/opt/opensearch-1.0.0/config/riker.pem'
+    destination: "/opt/opensearch-%{lookup('opensearch::version')}/config/riker.pem"
   riker_private:
     source: '/tmp/riker_private.tpl'
-    destination: '/opt/opensearch-1.0.0/config/riker_private.pem'
+    destination: "/opt/opensearch-%{lookup('opensearch::version')}/config/riker_private.pem"

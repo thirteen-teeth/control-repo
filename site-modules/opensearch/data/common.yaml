@@ -1,5 +1,5 @@
 ---
-opensearch::version: '1.0.0'
+opensearch::version: '1.1.0'
 opensearch::ensure: 'present'
 opensearch::artifact_base_url: 'https://artifacts.opensearch.org/releases/bundle/opensearch'
 opensearch::artifact_name: "opensearch-%{lookup('opensearch::version')}-linux-x64.tar.gz"
@@ -14,7 +14,6 @@ opensearch::config_dir: "%{lookup('opensearch::install_dir')}/config"
 opensearch::log_dir: '/var/log/opensearch'
 opensearch::data_dir: '/var/lib/opensearch'
 opensearch::config_hash:
-  cluster.name: 'vagrant'
   node.name: "%{::fqdn}"
   path.data: '/var/lib/opensearch'
   path.logs: '/var/log/opensearch'
@@ -22,8 +21,6 @@ opensearch::config_hash:
   bootstrap.memory_lock: true
   network.host: '0.0.0.0'
   # https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-hosts-providers.html#file-based-hosts-provider TODO
-  discovery.seed_hosts: ['os-master-01.puppetdomain', 'os-master-02.puppetdomain', 'os-master-03.puppetdomain']
-  cluster.initial_master_nodes: ['os-master-01.puppetdomain', 'os-master-02.puppetdomain', 'os-master-03.puppetdomain']
   action.destructive_requires_name: true
   plugins.security.ssl.http.enabled: true
   plugins.security.ssl.transport.enforce_hostname_verification: true

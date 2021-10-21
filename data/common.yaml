@@ -6,6 +6,12 @@ lookup_options:
   consul::services:
     merge:
       strategy: deep
+  opensearch_dashboards::config_hash:
+    merge:
+      strategy: deep
+  opensearch::config_hash:
+    merge:
+      strategy: deep
 
 profile::base::packages:
   - 'vim'

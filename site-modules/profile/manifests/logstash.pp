@@ -23,7 +23,8 @@ class profile::logstash (
 
   exec { $plugin_exec:
     command => '/usr/share/logstash/bin/logstash-plugin install logstash-output-opensearch',
-    # unless  => "curl -sS -XGET 'localhost:9600/_node/plugins' | jq '.plugins[] | select(.name==\"logstash-output-opensearch\")' | grep logstash-output-opensearch",
+    # unless  => "curl -sS -XGET 'localhost:9600/_node/plugins' | jq '.plugins[] | \
+    # select(.name==\"logstash-output-opensearch\")' | grep logstash-output-opensearch",
     # would only work if logstash systemd process is running, check quotes escaping
     unless  => '/usr/share/logstash/bin/logstash-plugin list | grep logstash-output-opensearch',
   }
