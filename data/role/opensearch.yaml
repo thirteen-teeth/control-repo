@@ -22,3 +22,12 @@ consul_template::templates:
   riker_private:
     source: '/tmp/riker_private.tpl'
     destination: "/opt/opensearch-%{lookup('opensearch::version')}/config/riker_private.pem"
+
+consul::services:
+  opensearch_master:
+    address: '%{facts.fqdn}'
+    port: 9200
+    checks:
+      - tcp: 'localhost:9200'
+        interval: '1m'
+        timeout: '10s'
