@@ -2,12 +2,10 @@
 class opensearch::install {
 
   $fix_permissions = 'install dir permissions fix'
-  $copy_certs = 'copy puppet certs'
-  Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
 
   user { $opensearch::username:
     ensure     => $opensearch::ensure,
-    shell      => '/bin/bash', #FIX ME
+    shell      => '/sbin/nologin',
     managehome => true,
   }
 
@@ -35,6 +33,7 @@ class opensearch::install {
   }
   exec { $fix_permissions:
     command     => "chown -R ${opensearch::username}:${opensearch::username} ${opensearch::install_dir}",
+    path        => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ],
     refreshonly => true,
   }
 
