@@ -14,9 +14,6 @@ consul_template::config_dir: '/etc/consul-template'
 consul_template::log_dir: '/var/log/consul-template'
 consul_template::data_dir: '/var/lib/consul-template'
 consul_template::general:
-  log_level: 'warn'
+  log_level: 'info'
 consul_template::consul:
   address: '127.0.0.1:8500'
-consul_template::vault:
-  address: 'http://vault-01.puppetdomain:8200'
-  vault_agent_token_file: '/opt/vault_data/initial_token'

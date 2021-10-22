@@ -47,5 +47,9 @@ consul::services:
     tags:
       - 'node_exporter'
 
+consul_template::vault:
+  address: 'http://vault-01.puppetdomain:8200'
+  vault_agent_token_file: '/opt/vault_data/initial_token'
+
 prometheus::node_exporter::collectors_disable:
   - 'powersupplyclass'

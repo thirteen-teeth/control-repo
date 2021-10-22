@@ -1,10 +1,34 @@
 ---
-
 opensearch::version: '1.1.0'
 opensearch::config_hash:
+  cluster.name: 'vagrant'
+  # TODO see if this works in opensearch
+  # https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-hosts-providers.html#file-based-hosts-provider
   discovery.seed_hosts: ['os-master-01.puppetdomain', 'os-master-02.puppetdomain', 'os-master-03.puppetdomain']
   cluster.initial_master_nodes: ['os-master-01.puppetdomain', 'os-master-02.puppetdomain', 'os-master-03.puppetdomain']
-  cluster.name: 'vagrant'
+  plugins.security.ssl.http.enabled: true
+  plugins.security.ssl.transport.pemkey_filepath: 'private.pem'
+  plugins.security.ssl.transport.pemcert_filepath: 'cert.pem'
+  plugins.security.ssl.transport.pemtrustedcas_filepath: 'ca.pem'
+  plugins.security.ssl.http.pemkey_filepath: 'private.pem'
+  plugins.security.ssl.http.pemcert_filepath: 'cert.pem'
+  plugins.security.ssl.http.pemtrustedcas_filepath: 'ca.pem'
+  plugins.security.nodes_dn: ['CN=*.puppetdomain']
+  plugins.security.authcz.admin_dn: ['CN=riker']
+  plugins.security.ssl.transport.enforce_hostname_verification: true
+  plugins.security.system_indices.enabled: true
+  plugins.security.system_indices.indices: [".opendistro-alerting-config", ".opendistro-alerting-alert*", ".opendistro-anomaly-results*", ".opendistro-anomaly-detector*", ".opendistro-anomaly-checkpoints", ".opendistro-anomaly-detection-state", ".opendistro-reports-*", ".opendistro-notifications-*", ".opendistro-notebooks", ".opendistro-asynchronous-search-response*"]
+  plugins.security.restapi.roles_enabled: ["all_access", "security_rest_api_access"]
+  plugins.security.audit.type: 'internal_opensearch'
+  plugins.security.enable_snapshot_restore_privilege: true
+  plugins.security.check_snapshot_restore_write_privileges: true
+
+profile::opensearch::source_templates:
+  - 'cert'
+  - 'private'
+  - 'ca'
+  - 'riker'
+  - 'riker_private'
 
 consul_template::templates:
   cert:
