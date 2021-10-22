@@ -1,7 +1,7 @@
 ---
 opensearch::version: '1.1.0'
 opensearch::config_hash:
-  cluster.name: 'vagrant'
+  cluster.name: "%{trusted.extensions.pp_environment}"
   # TODO see if this works in opensearch
   # https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-hosts-providers.html#file-based-hosts-provider
   discovery.seed_hosts: ['os-master-01.puppetdomain', 'os-master-02.puppetdomain', 'os-master-03.puppetdomain']
