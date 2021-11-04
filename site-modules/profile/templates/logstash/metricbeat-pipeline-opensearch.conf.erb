@@ -8,8 +8,8 @@ output {
   opensearch {
     hosts => ["<%= @destination_url -%>"]
     index => "metricbeat-%{+YYYY.MM.dd}"
-    user => "logstash"
-    password => "logstash"
+    user => "admin"
+    password => "admin"
     ssl => true
     ssl_certificate_verification => false
   }
