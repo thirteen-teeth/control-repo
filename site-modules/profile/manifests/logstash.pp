@@ -3,6 +3,7 @@ class profile::logstash (
   $repo_name = 'elastic-oss-7',
   $package_name = 'logstash-oss',
   $version = '7.10.2',
+  $destination_url = 'https://os-master-01.puppetdomain:9200',
 ) {
 
   yumrepo { $repo_name:
@@ -29,13 +30,17 @@ class profile::logstash (
     unless  => '/usr/share/logstash/bin/logstash-plugin list | grep logstash-output-opensearch',
   }
 
-  file { 'pipeline-opensearch.conf':
-    path    => '/etc/logstash/conf.d/pipeline-opensearch.conf',
-    mode    => '0644',
-    owner   => 'logstash',
-    group   => 'logstash',
-    content => template('profile/logstash/pipeline-opensearch.conf.erb'),
-    require => Package[$package_name],
+  $conf_names = ['metricbeat-pipeline-opensearch.conf', 'nginx-pipeline-opensearch.conf']
+
+  $conf_names.each |$file_name| {
+    file { $file_name:
+      path    => "/etc/logstash/conf.d/${file_name}",
+      mode    => '0644',
+      owner   => 'logstash',
+      group   => 'logstash',
+      content => template("profile/logstash/${file_name}.erb"),
+      require => Package[$package_name],
+    }
   }
 
   file { 'nginx.log':

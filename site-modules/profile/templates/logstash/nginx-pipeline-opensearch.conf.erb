@@ -21,8 +21,8 @@ filter {
 
 output {
   opensearch {
-    hosts => ["https://os-master-01.puppetdomain:9200"]
-    index => "logstash-%{+YYYY.MM.dd}"
+    hosts => ["<%= @destination_url -%>"]
+    index => "nginx-%{+YYYY.MM.dd}"
     user => "logstash"
     password => "logstash"
     ssl => true
