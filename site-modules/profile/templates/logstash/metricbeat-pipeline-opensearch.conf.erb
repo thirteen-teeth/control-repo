@@ -7,7 +7,7 @@ input {
 output {
   opensearch {
     hosts => ["<%= @destination_url -%>"]
-    index => "metricbeat-%{+YYYY.MM.dd}"
+    index => "beats-%{+YYYY.MM.dd}"
     user => "admin"
     password => "admin"
     ssl => true
