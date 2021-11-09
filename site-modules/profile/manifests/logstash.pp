@@ -30,11 +30,11 @@ class profile::logstash (
     unless  => '/usr/share/logstash/bin/logstash-plugin list | grep logstash-output-opensearch',
   }
 
-  service { 'logstash':
-    ensure  => 'running',
-    enable  => true,
-    require => Package[$package_name],
-  }
+#  service { 'logstash':
+#    ensure  => 'running',
+#    enable  => true,
+#    require => Package[$package_name],
+#  }
 
   $conf_names = ['metricbeat-pipeline-opensearch.conf', 'nginx-pipeline-opensearch.conf']
 
