@@ -22,6 +22,9 @@ opensearch::config_hash:
   plugins.security.audit.type: 'internal_opensearch'
   plugins.security.enable_snapshot_restore_privilege: true
   plugins.security.check_snapshot_restore_write_privileges: true
+opensearch::plugins_hash:
+  prometheus-exporter:
+    url: 'https://github.com/aparo/opensearch-prometheus-exporter/releases/download/1.1.0/prometheus-exporter-1.1.0.zip'
 
 profile::opensearch::source_templates:
   - 'cert'
