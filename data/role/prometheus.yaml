@@ -34,6 +34,15 @@ prometheus::scrape_configs:
       scheme: 'http'
       datacenter: 'vagrant'
       services:  ['opensearch_master']
+  - job_name: 'grafana'
+    scheme: 'http'
+    scrape_interval: '10s'
+    scrape_timeout: '10s'
+    consul_sd_configs:
+    - server: 'consul-01.puppetdomain:8500'
+      scheme: 'http'
+      datacenter: 'vagrant'
+      services:  ['grafana']
 
 grafana::provisioning_datasources:
   apiVersion: 1
