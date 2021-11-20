@@ -27,6 +27,8 @@ prometheus::scrape_configs:
     basic_auth:
       username: 'admin'
       password: 'admin'
+    tls_config:
+      insecure_skip_verify: true
     consul_sd_configs:
     - server: 'consul-01.puppetdomain:8500'
       scheme: 'http'
