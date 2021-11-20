@@ -17,16 +17,9 @@ class opensearch (
   Hash    $config_hash,
   Hash    $plugins_hash,
 ) {
-#  contain opensearch::install
-#  contain opensearch::config
-#  contain opensearch::plugins
-#  contain opensearch::service
-#  Class['opensearch::install'] ~> Class['opensearch::config'] ~> Class['opensearch::plugins'] ~> Class['opensearch::service']
-
   contain opensearch::install
   contain opensearch::config
+  contain opensearch::plugins
   contain opensearch::service
-  Class['opensearch::install'] ~> Class['opensearch::config'] ~> Class['opensearch::service']
-
-
+  Class['opensearch::install'] ~> Class['opensearch::config'] ~> Class['opensearch::plugins'] ~> Class['opensearch::service']
 }
