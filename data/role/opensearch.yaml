@@ -36,19 +36,19 @@ profile::opensearch::source_templates:
 consul_template::templates:
   cert:
     source: '/tmp/cert.tpl'
-    destination: "/opt/opensearch-%{lookup('opensearch::version')}/config/cert.pem"
+    destination: "%{lookup('opensearch::config_dir')}/cert.pem"
   private:
     source: '/tmp/private.tpl'
-    destination: "/opt/opensearch-%{lookup('opensearch::version')}/config/private.pem"
+    destination: "%{lookup('opensearch::config_dir')}/private.pem"
   ca:
     source: '/tmp/ca.tpl'
-    destination: "/opt/opensearch-%{lookup('opensearch::version')}/config/ca.pem"
+    destination: "%{lookup('opensearch::config_dir')}/ca.pem"
   riker:
     source: '/tmp/riker.tpl'
-    destination: "/opt/opensearch-%{lookup('opensearch::version')}/config/riker.pem"
+    destination: "%{lookup('opensearch::config_dir')}/riker.pem"
   riker_private:
     source: '/tmp/riker_private.tpl'
-    destination: "/opt/opensearch-%{lookup('opensearch::version')}/config/riker_private.pem"
+    destination: "%{lookup('opensearch::config_dir')}/riker_private.pem"
 
 consul::services:
   opensearch_master:
