@@ -3,7 +3,7 @@ opensearch_dashboards::version: '1.1.0'
 opensearch_dashboards::config_hash:
   server.host: 0.0.0.0
   opensearchDashboards.index: ".opensearch_dashboards"
-  opensearch.hosts: ["https://localhost:9200"]
+  opensearch.hosts: ["https://os-master-01.puppetdomain:9200"]
   opensearch.ssl.verificationMode: none   # FIX ME, more below
   opensearch.username: "kibanaserver"
   opensearch.password: "kibanaserver"
@@ -24,9 +24,6 @@ profile::opensearch_dashboards::source_templates:
   - 'cert'
   - 'private'
   - 'ca'
-profile::opensearch::source_templates:
-  - 'riker'
-  - 'riker_private'
 
 consul_template::templates:
   osd_cert:
@@ -38,50 +35,6 @@ consul_template::templates:
   osd_ca:
     source: '/tmp/ca.tpl'
     destination: "%{lookup('opensearch_dashboards::config_dir')}/ca.pem"
-  cert:
-    source: '/tmp/cert.tpl'
-    destination: "%{lookup('opensearch::config_dir')}/cert.pem"
-  private:
-    source: '/tmp/private.tpl'
-    destination: "%{lookup('opensearch::config_dir')}/private.pem"
-  ca:
-    source: '/tmp/ca.tpl'
-    destination: "%{lookup('opensearch::config_dir')}/ca.pem"
-  riker:
-    source: '/tmp/riker.tpl'
-    destination: "%{lookup('opensearch::config_dir')}/riker.pem"
-  riker_private:
-    source: '/tmp/riker_private.tpl'
-    destination: "%{lookup('opensearch::config_dir')}/riker_private.pem"
-
-opensearch::version: '1.1.0'
-opensearch::config_hash:
-  node.master: false
-  node.data: true
-  cluster.name: "%{trusted.extensions.pp_environment}"
-  # TODO see if this works in opensearch
-  # https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-hosts-providers.html#file-based-hosts-provider
-  discovery.seed_hosts: ['os-master-01.puppetdomain', 'os-master-02.puppetdomain', 'os-master-03.puppetdomain']
-  cluster.initial_master_nodes: ['os-master-01.puppetdomain', 'os-master-02.puppetdomain', 'os-master-03.puppetdomain']
-  plugins.security.ssl.http.enabled: true
-  plugins.security.ssl.transport.pemkey_filepath: 'private.pem'
-  plugins.security.ssl.transport.pemcert_filepath: 'cert.pem'
-  plugins.security.ssl.transport.pemtrustedcas_filepath: 'ca.pem'
-  plugins.security.ssl.http.pemkey_filepath: 'private.pem'
-  plugins.security.ssl.http.pemcert_filepath: 'cert.pem'
-  plugins.security.ssl.http.pemtrustedcas_filepath: 'ca.pem'
-  plugins.security.nodes_dn: ['CN=*.puppetdomain']
-  plugins.security.authcz.admin_dn: ['CN=riker']
-  plugins.security.ssl.transport.enforce_hostname_verification: true
-  plugins.security.system_indices.enabled: true
-  plugins.security.system_indices.indices: [".opendistro-alerting-config", ".opendistro-alerting-alert*", ".opendistro-anomaly-results*", ".opendistro-anomaly-detector*", ".opendistro-anomaly-checkpoints", ".opendistro-anomaly-detection-state", ".opendistro-reports-*", ".opendistro-notifications-*", ".opendistro-notebooks", ".opendistro-asynchronous-search-response*"]
-  plugins.security.restapi.roles_enabled: ["all_access", "security_rest_api_access"]
-  plugins.security.audit.type: 'internal_opensearch'
-  plugins.security.enable_snapshot_restore_privilege: true
-  plugins.security.check_snapshot_restore_write_privileges: true
-opensearch::plugins_hash:
-  prometheus-exporter:
-    url: 'https://github.com/aparo/opensearch-prometheus-exporter/releases/download/1.1.0/prometheus-exporter-1.1.0.zip'
 
 consul::services:
   opensearch_dashboards:
@@ -89,12 +42,5 @@ consul::services:
     port: 5601
     checks:
       - tcp: 'localhost:5601'
-        interval: '1m'
-        timeout: '10s'
-  opensearch_data:
-    address: '%{facts.fqdn}'
-    port: 9200
-    checks:
-      - tcp: 'localhost:9200'
         interval: '1m'
         timeout: '10s'
