@@ -13,4 +13,4 @@ opensearch_dashboards::username: 'opensearch-dashboards'
 opensearch_dashboards::config_dir: "%{lookup('opensearch_dashboards::install_dir')}/config"
 opensearch_dashboards::log_dir: '/var/log/opensearch-dashboards'
 opensearch_dashboards::data_dir: '/var/lib/opensearch-dashboards'
-opensearch_dashboards::config_hash:
+opensearch_dashboards::config_hash: ~
