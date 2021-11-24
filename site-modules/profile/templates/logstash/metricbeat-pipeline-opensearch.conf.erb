@@ -1,16 +1,30 @@
 input {
-  beats {
-    port => 5044
+  generator {
+    type => "generated"
+  }
+}
+
+filter {
+  if [type] == "generated" {
+    metrics {
+      meter => "events"
+      add_tag => "metric"
+    }
   }
 }
 
 output {
-  opensearch {
-    hosts => ["<%= @destination_url -%>"]
-    index => "beats-%{+YYYY.MM.dd}"
-    user => "admin"
-    password => "admin"
-    ssl => true
-    ssl_certificate_verification => false
+  if "metric" in [tags] {
+    opensearch {
+      hosts => ["<%= @destination_url -%>"]
+      index => "generator-%{+YYYY.MM.dd}"
+      user => "admin"
+      password => "admin"
+      ssl => true
+      ssl_certificate_verification => false
+      codec => graphite {
+        metrics_format => "%{host}.test.*"
+      }
+    }
   }
 }
