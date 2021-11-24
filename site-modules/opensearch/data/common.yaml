@@ -15,8 +15,8 @@ opensearch::log_dir: '/var/log/opensearch'
 opensearch::data_dir: '/var/lib/opensearch'
 opensearch::config_hash:
   node.name: "%{::fqdn}"
-  path.data: '/var/lib/opensearch'
-  path.logs: '/var/log/opensearch'
+  path.data: "%{lookup('opensearch::data_dir')}"
+  path.logs: "%{lookup('opensearch::log_dir')}"
   action.destructive_requires_name: true
   bootstrap.memory_lock: true
   network.host: '0.0.0.0'
