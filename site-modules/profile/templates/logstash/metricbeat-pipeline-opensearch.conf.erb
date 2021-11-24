@@ -22,9 +22,17 @@ output {
       password => "admin"
       ssl => true
       ssl_certificate_verification => false
-      codec => graphite {
-        metrics_format => "%{host}.test.*"
-      }
+      codec => graphite
+    }
+  }
+  if [type] == "generated" {
+    opensearch {
+      hosts => ["<%= @destination_url -%>"]
+      index => "gmessage-%{+YYYY.MM.dd}"
+      user => "admin"
+      password => "admin"
+      ssl => true
+      ssl_certificate_verification => false
     }
   }
 }
